@@ -57,3 +57,15 @@ void MonsterBase::setName()
     std::cout << "Give this monster a name: ";
     getline(std::cin, name);
 }
+
+void MonsterBase::eat(Food &f)
+{
+    if(this->hunger + f.hungerRestored <= this->maxHunger)
+    {
+        hunger += f.hungerRestored;
+    }
+    else
+    {
+        hunger = maxHunger;
+    }
+}

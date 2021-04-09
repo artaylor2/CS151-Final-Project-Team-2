@@ -5,9 +5,20 @@
 #include <string>
 #include <sstream>
 
-struct rgb
+struct Rgb
 {
     int r, g, b;
+};
+
+struct Food
+{
+    std::string itemName;
+    int hungerRestored;
+    Food(std::string name, int hunger)
+    {
+        itemName = name;
+        hungerRestored = hunger;
+    }
 };
 
 class MonsterBase
@@ -20,6 +31,7 @@ public:
     void levelUp();
     std::string toStr();
     void setName(); // May need refactoring for GUI integration
+    void eat(Food &f);
 
 private:
     std::string name;
@@ -28,7 +40,7 @@ private:
     int maxHp; // 20-50
     int hunger; // 0-maxHunger
     int maxHunger; // 5-20
-    rgb color; // r 0-255, g 0-255, b 0-255
+    Rgb color; // r 0-255, g 0-255, b 0-255
 };
 
 // BSSID format example:
