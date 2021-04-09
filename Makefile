@@ -7,7 +7,7 @@
 CXX = g++
 
 # define any compile-time flags
-CXXFLAGS	:= -std=c++17 -Wall -Wextra -g
+CXXFLAGS	:= -std=c++17 -Wall -Wextra -pedantic -pedantic-errors
 
 # define library paths in addition to /usr/lib
 #   if I wanted to include libraries not in /usr/lib I'd specify
@@ -15,7 +15,7 @@ CXXFLAGS	:= -std=c++17 -Wall -Wextra -g
 LFLAGS =
 
 # define output directory
-OUTPUT	:= output
+OUTPUT	:= bin
 
 # define source directory
 SRC		:= src
