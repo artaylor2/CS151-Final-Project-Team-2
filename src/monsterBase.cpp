@@ -31,8 +31,6 @@ MonsterBase::MonsterBase(std::string bssid)
 
     // Name monster
     setName();
-
-    std::cout << toStr() << '\n';
 }
 
 void MonsterBase::levelUp()
@@ -48,8 +46,8 @@ void MonsterBase::levelUp()
 std::string MonsterBase::toStr()
 {
     std::stringstream strS("");
-    strS << name << " " << level << " " << hp
-         << maxHp << " " << hunger << " " << maxHunger
+    strS << name << " " << level << " " << hp << " "
+         << maxHp << " " << hunger << " " << maxHunger << " "
          << color.r << " " << color.g << " " << color.b;
     return strS.str();
 }
