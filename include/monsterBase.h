@@ -27,9 +27,9 @@ class MonsterBase
 public:
     MonsterBase(std::string &ssid); // Generates basic data from SSID
     // Default destructor will be created automatically
-    ~MonsterBase() = default;
+    virtual ~MonsterBase() = default;
     // Defined destructor unnecessary because no dynamic memory
-    std::string toStr();
+    std::string toStr() const;
     void setName(); // May need refactoring for GUI integration
     void eat(Food &f);
 

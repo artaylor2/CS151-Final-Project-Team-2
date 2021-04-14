@@ -64,7 +64,7 @@ MonsterBase::MonsterBase(std::string &ssid)
     setName();
 }
 
-std::string MonsterBase::toStr()
+std::string MonsterBase::toStr() const
 {
     std::stringstream strS("");
     strS << name << " " << happiness << " " << maxHappiness << " " << hp << " "
