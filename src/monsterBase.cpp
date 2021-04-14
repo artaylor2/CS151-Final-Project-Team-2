@@ -1,52 +1,73 @@
 #include "monsterBase.h"
 
-MonsterBase::MonsterBase(std::string bssid)
+MonsterBase::MonsterBase(std::string &ssid)
 {
-    std::stringstream bssidStrm(bssid);
-    int temp;
-    bssidStrm >> std::hex >> temp; // Get number from BSSID
-    this->level = (temp % 14) + 1; // Assign level
+    // Find the product of all ascii chars
+    int total = 1;
+    for(int i = 0; i < ssid.size(); i++)
+    {
+        total *= ssid[i]; // multiply by each ascii value
+        total = total % 9999999 + 1000000; // limit number growth to prevent overflow and zero values
+    }
+    total = abs(total); // Value should be positive but just in case...
 
-    bssidStrm.get(); // get colon
-    bssidStrm >> std::hex >> temp; // Get number from BSSID
-    this->maxHp = (temp % 30) + 20; // Assign maxHp
+    this->maxHappiness = 15; // Assign maxHappiness
+    this->happiness = this->maxHappiness; // Full by default
+
+    this->maxHp = (total % 30) + 20; // Assign maxHp
     this->hp = this->maxHp; // Full health by default
 
-    bssidStrm.get(); // get colon
-    bssidStrm >> std::hex >> temp; // Get number from BSSID
-    this->maxHunger = (temp % 15) + 5; // Assign maxHunger
+    this->maxHunger = (total % 15) + 5; // Assign maxHunger
     this->hunger = this->maxHunger; // Full hunger by default
 
-    bssidStrm.get(); // get colon
-    bssidStrm >> std::hex >> temp; // Get number from BSSID
-    this->color.r = temp % 255; // Assign red
-    
-    bssidStrm.get(); // get colon
-    bssidStrm >> std::hex >> temp; // Get number from BSSID
-    this->color.g = temp % 255; // Assign green
-    
-    bssidStrm.get(); // get colon
-    bssidStrm >> std::hex >> temp; // Get number from BSSID
-    this->color.b = temp % 255; // Assign blue
+    // Create rgb values by coverting int to Hex
+    std::stringstream strS("");
+    strS << std::hex << total;
+    std::string hexColor = strS.str();
+    if(hexColor.size() == 5) // Smallest possible value has 5 digits
+    {
+        hexColor += "0"; // Append a zero to make it 6 chars
+        strS.str(hexColor);
+    }
+
+    std::string tempR = "", tempG = "", tempB = ""; // Hold parts of hex color
+
+    // Feed in the red values from hex color
+    tempR += strS.get();
+    tempR += strS.get();
+
+    // Green values from hex color
+    tempG += strS.get();
+    tempG += strS.get();
+
+    // Blue values from hex color
+    tempB += strS.get();
+    tempB += strS.get();
+
+    // Convert to decimal and fill red
+    strS.str(tempR);
+    strS >> std::hex >> this->color.r;
+
+    // Clear stream, Convert to decimal and fill Green
+    strS.str("");
+    strS.clear();
+    strS.str(tempG);
+    strS >> std::hex >> this->color.g;
+
+    // Clear stream, Convert to decimal and fill Blue
+    strS.str("");
+    strS.clear();
+    strS.str(tempB);
+    strS >> std::hex >> this->color.b;
 
     // Name monster
     setName();
 }
 
-void MonsterBase::levelUp()
-{
-    // Basic stat increases
-    this->level++;
-    this->maxHp = maxHp * 1.2; // 20% health increase
-    this->hp = maxHp; // Full hp
-    this->maxHunger += 5; // Add 5 maxHunger
-    this->hunger += 5; // Add newly created 5 max hunger
-}
-
 std::string MonsterBase::toStr()
 {
     std::stringstream strS("");
-    strS << name << " " << level << " " << hp << " "
+    strS << name << " " << happiness << " " << maxHappiness << " " << hp << " "
          << maxHp << " " << hunger << " " << maxHunger << " "
          << color.r << " " << color.g << " " << color.b;
     return strS.str();
