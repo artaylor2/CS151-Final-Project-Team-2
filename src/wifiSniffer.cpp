@@ -11,13 +11,24 @@
 
 #include "wifiSniffer.h"
 
+/**
+ * @brief Conduct a wifi scan and output the results to a file
+ * 
+ * @param deviceID The device ID of the hardware performing the scan
+ * @param filePath The filepath of the file where the results will be saved
+ * @return true Scan failed
+ * @return false Scan was successful
+ */
+
 bool sniffWifi(char* deviceID, string filePath)
 {
-    wireless_scan_head resultHead;
-    wireless_scan *resultPtr;
-    iwrange range;
-    int socket;
+    // Initialize necessary variables for the scan
+    wireless_scan_head resultHead;  // Head pointer object for the results
+    wireless_scan *resultPtr;       // Result pointer for traversing the linked list
+    iwrange range;                  // The range of networks being polled
+    int socket;                     // The socket being used to conduct the scan
 
+    // Get a free socket for scanning on
     socket = iw_sockets_open();
 
     // Gather metadata for the scan
@@ -27,24 +38,36 @@ bool sniffWifi(char* deviceID, string filePath)
         return false;
     }
 
-    // Perform the sca
+    // Perform the scan, and return the head of the result in to resultHead
     if (iw_scan(socket, deviceID, range.we_version_compiled, &resultHead) < 0) 
     {
         cerr << "Error during iw_scan. Scan incomplete." << endl;
         return false;
     }
 
+    // Traverse the linked list, printing the results until the end is reached
     while(resultPtr != nullptr)
     {
         cout << resultPtr->b.essid << endl
              << resultPtr->stats.qual.level << endl;
     }
     
+    // If the process is successful then return confirmation to the calling function
     return true;
 }
 
+/**
+ * @brief Open and validate an ofstream using a given filePath
+ * 
+ * @param newStream The stream object being opened
+ * @param filePath The filepath being opened from
+ * @return true File open was successful
+ * @return false File open failed
+ */
+
 bool openFile(ofstream &newStream, string filePath)
 {
+    // Try to open the stream. If the attempt fails, throw an error and return False
     try
     {
         newStream.open(filePath);
@@ -60,5 +83,6 @@ bool openFile(ofstream &newStream, string filePath)
         return false;
     }
 
+    // Otherwise return confirmation to the calling function
     return true;   
 }
