@@ -8,6 +8,17 @@
  * @copyright Copyright (c) 2021
 **/
 
+/**
+ * IMPORTANT NOTE!
+ * To compile this library make sure to install libiw-dev
+ *      sudo apt-get install libiw-dev
+ * 
+ * And when compiling attach a -liw flag at the end of the compilation command
+ * This flag will ensure that the library is properly linked to the header
+ *      Ex:
+ *      g++ -std=c++11 -Wall -Wextra wifiSniffer.cpp -liw
+ */
+
 #include <fstream>      // ofstream
 #include <iostream>     // cerr and cout
 #include <stdio.h>      // c-string handling for iwlib
