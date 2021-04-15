@@ -4,7 +4,7 @@
 #include <sstream>
 #include "rfRancher.h"
 #include "monsterBase.h"
-#include "wifiSniffer.h"
+// #include "wifiSniffer.h"
 
 int main(int argc, char *argv[])
 {
