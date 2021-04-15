@@ -34,6 +34,12 @@ using std::ofstream;
 using std::string;
 using std::vector;
 
+struct scanResult
+{
+    string ssid;
+    int strength;
+};
+
 // Open a filepath using a given ofstream object and validate it
 bool openFile(ofstream &newStream, string filePath);
 

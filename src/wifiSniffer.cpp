@@ -45,13 +45,47 @@ bool sniffWifi(char* deviceID, string filePath)
         return false;
     }
 
-    // Traverse the linked list, printing the results until the end is reached
+    vector<scanResult> resultVector;
+    scanResult tempResult;
+
+    // Traverse the linked list, storing non-repeats in to a vector of scanResult structs
     while(resultPtr != nullptr)
     {
-        cout << resultPtr->b.essid << endl
-             << resultPtr->stats.qual.level << endl;
+        // Only process a result if an SSID is associated with it
+        if(resultPtr->b.essid != "")
+        {
+            // Flag for duplicate found
+            bool foundDup = false;
+
+            // Migrate the needed data from the results linked list to a temporary struct
+            tempResult.ssid = resultPtr->b.essid;
+            tempResult.strength = resultPtr->stats.qual.level;
+
+            // Check for duplicates already present in the vector
+            for(int i = 0; i < resultVector.size(); i++)
+            {
+                if(tempResult.ssid == resultVector[i].ssid)
+                {
+                    foundDup = true;
+                    break;
+                }
+            }
+
+            // If the ID is unique then push the temporary result on to the back of the result vector
+            if(!foundDup)
+            {
+                resultVector.push_back(tempResult);
+            }
+        }        
     }
-    
+
+    // Print the resulting vector
+    for(int i = 0; i < resultVector.size(); i++)
+    {
+        cout << resultVector[i].ssid << endl
+             << resultVector[i].strength << endl;
+    }
+
     // If the process is successful then return confirmation to the calling function
     return true;
 }
