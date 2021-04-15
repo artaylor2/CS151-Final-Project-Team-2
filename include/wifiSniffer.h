@@ -17,6 +17,9 @@
  * This flag will ensure that the library is properly linked to the header
  *      Ex:
  *      g++ -std=c++11 -Wall -Wextra wifiSniffer.cpp -liw
+ * 
+ *      note: The current structure of this code is designed around typecasting c-strings which is
+ *            not allowed under ISO C++. This header will not compile with the -pedantic flag.
  */
 
 #include <fstream>      // ofstream
