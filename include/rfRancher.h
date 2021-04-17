@@ -8,6 +8,7 @@
 enum monstTypes {Ghost, Fire, Water, Forest, Rock, Ice};
 
 std::string findStrongest(std::ifstream &in);
-int determineType(std::string &ssid);
+int hashSsid(std::string ssid);
+int determineType(int ssidHash);
 
 #endif

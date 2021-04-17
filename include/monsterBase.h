@@ -25,7 +25,7 @@ struct Food
 class MonsterBase
 {
 public:
-    MonsterBase(std::string &ssid); // Generates basic data from SSID
+    MonsterBase(int ssidHash); // Generates basic data from SSID
     // Default destructor will be created automatically
     virtual ~MonsterBase() = default;
     // Defined destructor unnecessary because no dynamic memory

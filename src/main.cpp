@@ -9,7 +9,7 @@
 int main(int argc, char *argv[])
 {
 	// Open wifisniffer file
-	std::ifstream in("bin/scans/ResHallF1");
+	std::ifstream in("bin/scans/ResHallF3");
 	if(!in.is_open())
 	{
 		std::cerr << "File failed to open\n";
@@ -24,11 +24,15 @@ int main(int argc, char *argv[])
 		std::exit(1);
 	}
 
+	// Generate randoom number from ssid
+	int ssidHash = hashSsid(ssid);
+
 	// Determine monster type
-	int type = determineType(ssid);
+	int type = determineType(ssidHash);
 
 	// Temp monster creation for testing
-	MonsterBase monster(ssid);
+	MonsterBase monster(ssidHash);
+	std::cout << monster.toStr() << '\n';
 
 	// Not yet implemented
 

@@ -1,28 +1,19 @@
 #include "monsterBase.h"
 
-MonsterBase::MonsterBase(std::string &ssid)
+MonsterBase::MonsterBase(int ssidHash)
 {
-    // Find the product of all ascii chars
-    int total = 1;
-    for(int i = 0; i < ssid.size(); i++)
-    {
-        total *= ssid[i]; // multiply by each ascii value
-        total = total % 9999999 + 1000000; // limit number growth to prevent overflow and zero values
-    }
-    total = abs(total); // Value should be positive but just in case...
-
     this->maxHappiness = 15; // Assign maxHappiness
     this->happiness = this->maxHappiness; // Full by default
 
-    this->maxHp = (total % 30) + 20; // Assign maxHp
+    this->maxHp = (ssidHash % 30) + 20; // Assign maxHp
     this->hp = this->maxHp; // Full health by default
 
-    this->maxHunger = (total % 15) + 5; // Assign maxHunger
+    this->maxHunger = (ssidHash % 15) + 5; // Assign maxHunger
     this->hunger = this->maxHunger; // Full hunger by default
 
     // Create rgb values by coverting int to Hex
     std::stringstream strS("");
-    strS << std::hex << total;
+    strS << std::hex << ssidHash;
     std::string hexColor = strS.str();
     if(hexColor.size() == 5) // Smallest possible value has 5 digits
     {
