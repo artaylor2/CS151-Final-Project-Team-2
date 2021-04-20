@@ -5,7 +5,7 @@
 #include <fstream>
 #include <sstream>
 
-enum monstTypes {Ghost, Fire, Water, Forest, Rock, Ice};
+enum monstTypes {Undefined = -1, Ghost, Fire, Water, Forest, Rock, Ice};
 
 std::string findStrongest(std::ifstream &in);
 int hashSsid(std::string ssid);
