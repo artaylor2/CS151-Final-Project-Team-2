@@ -82,7 +82,7 @@ bool sniffWifi(char* deviceID, string filePath)
     // Write the results to file
     cout << "Sniffed " << resultVector.size() << " results." << endl;
    
-    fstream resultStream;
+    ofstream resultStream;
     openFile(resultStream, filePath);
 
     for(int i = 0; i < resultVector.size(); i++)
@@ -109,7 +109,7 @@ bool sniffWifi(char* deviceID, string filePath)
  * @return false File open failed
  */
 
-bool openFile(fstream &newStream, string filePath)
+bool openFile(ofstream &newStream, string filePath)
 {
     // Try to open the stream. If the attempt fails, throw an error and return False
     try

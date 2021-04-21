@@ -34,7 +34,7 @@ using std::cerr;
 using std::cout;
 using std::endl;
 using std::ifstream;
-using std::fstream;
+using std::ofstream;
 using std::string;
 using std::vector;
 
@@ -45,7 +45,7 @@ struct scanResult
 };
 
 // Open a filepath using a given ofstream object and validate it
-bool openFile(fstream &newStream, string filePath);
+bool openFile(ofstream &newStream, string filePath);
 
 // Sniff the local wifi networks and store the SSIDs and strengths in a file
 bool sniffWifi(char* deviceID = "wifi0", string filePath = "./sniffResults");
