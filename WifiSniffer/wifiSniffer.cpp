@@ -47,44 +47,54 @@ bool sniffWifi(char* deviceID, string filePath)
 
     vector<scanResult> resultVector;
     scanResult tempResult;
+    resultPtr = resultHead.result;
 
     // Traverse the linked list, storing non-repeats in to a vector of scanResult structs
     while(resultPtr != nullptr)
     {
-        // Only process a result if an SSID is associated with it
-        if(resultPtr->b.essid != "")
+        // Init flag for duplicate found
+        bool foundDup = false;
+
+        // Migrate the needed data from the results list to the temporary struct
+        tempResult.ssid = resultPtr->b.essid;
+        tempResult.strength = resultPtr->stats.qual.level;
+
+        // Check for duplicates already present in the result vector
+        for(int i = 0; i < resultVector.size(); i++)
         {
-            // Flag for duplicate found
-            bool foundDup = false;
-
-            // Migrate the needed data from the results linked list to a temporary struct
-            tempResult.ssid = resultPtr->b.essid;
-            tempResult.strength = resultPtr->stats.qual.level;
-
-            // Check for duplicates already present in the vector
-            for(int i = 0; i < resultVector.size(); i++)
+            if(tempResult.ssid == resultVector[i].ssid)
             {
-                if(tempResult.ssid == resultVector[i].ssid)
-                {
-                    foundDup = true;
-                    break;
-                }
+                foundDup = true;
+                break;
             }
+        }
 
-            // If the ID is unique then push the temporary result on to the back of the result vector
-            if(!foundDup)
-            {
-                resultVector.push_back(tempResult);
-            }
-        }        
+        // If the ID is unique then push the temporary result on to the back of the result vector
+        if(!foundDup)
+        {
+            resultVector.push_back(tempResult);
+        }
+
+        // Increment pointer
+        resultPtr = resultPtr->next;        
     }
 
-    // Print the resulting vector
+    // Write the results to file
+    cout << "Sniffed " << resultVector.size() << " results." << endl;
+   
+    fstream resultStream;
+    openFile(resultStream, filePath);
+
     for(int i = 0; i < resultVector.size(); i++)
     {
-        cout << resultVector[i].ssid << endl
-             << resultVector[i].strength << endl;
+        if(resultVector[i].ssid.size())
+        {
+            resultStream << resultVector[i].ssid << endl
+                         << resultVector[i].strength << endl;
+        }
     }
+
+    resultStream.close();
 
     // If the process is successful then return confirmation to the calling function
     return true;
@@ -99,7 +109,7 @@ bool sniffWifi(char* deviceID, string filePath)
  * @return false File open failed
  */
 
-bool openFile(ofstream &newStream, string filePath)
+bool openFile(fstream &newStream, string filePath)
 {
     // Try to open the stream. If the attempt fails, throw an error and return False
     try
@@ -119,4 +129,38 @@ bool openFile(ofstream &newStream, string filePath)
 
     // Otherwise return confirmation to the calling function
     return true;   
+}
+
+/**
+ * @brief Get the device ID of the system's first wireless device
+ * 
+ * @return char* ID name of the first registered wireless device
+ */
+string getDeviceID()
+{
+    // Create a temp variable for extracting the info we want
+    string lineScrub;
+
+    // Open the device's wireless reference file
+    ifstream deviceStream("/proc/net/wireless");
+
+    // Verify file opened successfully
+    if(!deviceStream.is_open())
+    {
+        cerr << "Error querying wifi device" << endl;
+        return NULL;
+    }
+
+    // Scrub first two lines of the file
+    getline(deviceStream, lineScrub);
+    getline(deviceStream, lineScrub);
+
+    // Read the ID of the first device
+    getline(deviceStream, lineScrub, ':');
+    
+
+    // Close the file stream and return the result
+    deviceStream.close();
+    
+    return lineScrub;
 }

@@ -13,7 +13,12 @@
 
 int main()
 {
-    sniffWifi();
+    // Get the system's current wireless device
+    string curID = getDeviceID();
+    cout << curID << " as device" << endl;
+
+    // Sniff the system's current wifi signals on that device
+    sniffWifi(&curID[0]);
 
     return 0;
 }
