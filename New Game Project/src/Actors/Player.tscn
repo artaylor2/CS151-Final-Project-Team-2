@@ -25,6 +25,7 @@ current = true
 zoom = Vector2( 2, 2 )
 limit_left = 0
 limit_top = 0
+limit_right = 2250
 limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
