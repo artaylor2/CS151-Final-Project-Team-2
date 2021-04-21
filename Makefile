@@ -7,12 +7,12 @@
 CXX = g++
 
 # define any compile-time flags
-CXXFLAGS	:= -std=c++11 -Wall -Wextra -pedantic -pedantic-errors
+CXXFLAGS	:= -std=c++11 -Wall -Wextra
 
 # define library paths in addition to /usr/lib
 #   if I wanted to include libraries not in /usr/lib I'd specify
 #   their path using -Lpath, something like:
-LFLAGS = #-liw
+LFLAGS = -liw
 
 # define output directory
 OUTPUT	:= bin
