@@ -8,17 +8,32 @@
  * @copyright Copyright (c) 2021
  * 
  */
+#include <iostream>
+#include <string>
 
 #include "wifiSniffer.h"
+
+using std::cout;
+using std::string;
 
 int main()
 {
     // Get the system's current wireless device
     string curID = getDeviceID();
-    cout << curID << " as device" << endl;
 
-    // Sniff the system's current wifi signals on that device
-    sniffWifi(&curID[0]);
+    // Validate the returned value
+    if(!curID.empty())
+    {
+        cerr << "Wifi device unavailable." << endl
+             << "Cancelling scan." << endl << endl;
+    }
+    else
+    {
+        // Sniff the system's current wifi signals on that device
+        // Variable is passed as a pointer to first char to convert from
+        // string to c-string
+        sniffWifi(&curID[0]);
+    }
 
     return 0;
 }

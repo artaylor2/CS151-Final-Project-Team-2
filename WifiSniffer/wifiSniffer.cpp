@@ -70,7 +70,7 @@ bool sniffWifi(char* deviceID, string filePath)
         }
 
         // If the ID is unique then push the temporary result on to the back of the result vector
-        if(!foundDup)
+        if(!foundDup && !tempResult.ssid.empty())
         {
             resultVector.push_back(tempResult);
         }
@@ -79,19 +79,23 @@ bool sniffWifi(char* deviceID, string filePath)
         resultPtr = resultPtr->next;        
     }
 
+    // Sort the results
+    quickSort(resultVector, 0, resultVector.size()-1);
+
     // Write the results to file
     cout << "Sniffed " << resultVector.size() << " results." << endl;
    
-    ofstream resultStream;
-    openFile(resultStream, filePath);
-
-    for(int i = 0; i < resultVector.size(); i++)
+    ofstream resultStream(filePath);
+    if(!resultStream.is_open())
     {
-        if(resultVector[i].ssid.size())
-        {
-            resultStream << resultVector[i].ssid << endl
-                         << resultVector[i].strength << endl;
-        }
+        cerr << "Error opening file.";
+        return false;
+    }
+
+    for(int i = resultVector.size() - 1; i >= 0; i--)
+    {
+        resultStream << resultVector[i].ssid << endl
+                     << resultVector[i].strength << endl;
     }
 
     resultStream.close();
@@ -101,34 +105,58 @@ bool sniffWifi(char* deviceID, string filePath)
 }
 
 /**
- * @brief Open and validate an ofstream using a given filePath
+ * @brief Quick sort a vector of scan results
  * 
- * @param newStream The stream object being opened
- * @param filePath The filepath being opened from
- * @return true File open was successful
- * @return false File open failed
+ * @param vec The vector of scan results
+ * @param left smallest index
+ * @param right biggest index
  */
-
-bool openFile(ofstream &newStream, string filePath)
+void quickSort(vector<scanResult> &vec, int left, int right)
 {
-    // Try to open the stream. If the attempt fails, throw an error and return False
-    try
+    if(left < right)
     {
-        newStream.open(filePath);
-        
-        if(!newStream.is_open())
+        int pivotIndex = partition(vec, left, right);
+        quickSort(vec, left, pivotIndex - 1);
+        quickSort(vec, pivotIndex, right);
+    }
+    return;
+}
+
+/**
+ * @brief Partititoning for a quick sort of a vector of scan results
+ * 
+ * @param vec vector of scan results
+ * @param left smallest index
+ * @param right largest index
+ * @return int new pivot index
+ */
+int partition(vector<scanResult> &vec, int left, int right)
+{
+    int pivotIndex = left + (right - left) / 2;
+    int pivotValue = vec[pivotIndex].strength;
+    int i = left, j = right;
+    scanResult temp;
+
+    while(i <= j) 
+    {
+        while(vec[i].strength < pivotValue) 
         {
-            throw string("File could not be opened.");
+            i++;
+        }
+        while(vec[j].strength > pivotValue) 
+        {
+            j--;
+        }
+        if(i <= j) 
+        {
+            temp = vec[i];
+            vec[i] = vec[j];
+            vec[j] = temp;
+            i++;
+            j--;
         }
     }
-    catch(const string &s)
-    {
-        cerr << s << '\n';
-        return false;
-    }
-
-    // Otherwise return confirmation to the calling function
-    return true;   
+    return i;
 }
 
 /**

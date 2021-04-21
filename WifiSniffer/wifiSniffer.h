@@ -44,8 +44,10 @@ struct scanResult
     int strength;
 };
 
-// Open a filepath using a given ofstream object and validate it
-bool openFile(ofstream &newStream, string filePath);
+// Perform Quick Sort a vector of scan results
+void quickSort(vector<scanResult> &vec, int left, int right);
+
+int partition(vector<scanResult> &vec, int left, int right);
 
 // Sniff the local wifi networks and store the SSIDs and strengths in a file
 bool sniffWifi(char* deviceID = "wifi0", string filePath = "./sniffResults");
