@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/interface/counter/label_bg.png" type="Texture" id=1]
+[ext_resource path="res://assets/interface/counter/bombs/icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/interface/theme/default_theme.tres" type="Theme" id=3]
+
+[node name="Counter" type="NinePatchRect"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 133.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 120, 0 )
+texture = ExtResource( 1 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -75.0
+margin_top = -48.5
+margin_right = 5.0
+margin_bottom = 31.5
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 0.541
+anchor_bottom = 0.541
+margin_left = 4.0
+margin_top = -27.591
+margin_right = 47.0
+margin_bottom = 27.409
+theme = ExtResource( 3 )
+text = "10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
