@@ -14,21 +14,7 @@
 
 int main(int argc, char *argv[])
 {
-	// Open wifisniffer file
-	std::ifstream in("bin/scans/ResHallF1");
-	if(!in.is_open())
-	{
-		std::cerr << "File failed to open\n";
-		std::exit(1);
-	}
-
-	// Get strongest ssid
-	std::string ssid = findStrongest(in);
-	if(ssid == "")
-	{
-		std::cerr << "No monsters nearby :(\n";
-		std::exit(1);
-	}
+	std::string ssid = ssidScan();
 
 	// Generate randoom number from ssid
 	int ssidHash = hashSsid(ssid);

@@ -22,6 +22,9 @@
  *            not allowed under ISO C++. This header will not compile with the -pedantic flag.
  */
 
+#ifndef SNIFF_H
+#define SNIFF_H
+
 #include <fstream>      // ofstream
 #include <iostream>     // cerr and cout
 #include <stdio.h>      // c-string handling for iwlib
@@ -50,7 +53,9 @@ void quickSort(vector<scanResult> &vec, int left, int right);
 int partition(vector<scanResult> &vec, int left, int right);
 
 // Sniff the local wifi networks and store the SSIDs and strengths in a file
-bool sniffWifi(char* deviceID = "wifi0", string filePath = "./sniffResults");
+bool sniffWifi(char* deviceID = "wifi0", string filePath = "./bin/scans/sniffResults");
 
 // Get the ID of the system's wireless hardware
 string getDeviceID();
+
+#endif
