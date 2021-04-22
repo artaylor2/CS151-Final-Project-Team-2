@@ -36,7 +36,6 @@ std::string ssidScan()
 	// Get strongest ssid
 	std::string ssid = "";
 	getline(in, ssid);
-	std::cout << ssid << '\n';
 	in.close(); // Close the file
     return ssid;
 }
