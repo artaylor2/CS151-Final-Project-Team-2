@@ -14,9 +14,11 @@
 
 int main(int argc, char *argv[])
 {
-	if(string wifiID = getDeviceID())
+	std::string wifiID = getDeviceID();
+	
+	if(!wifiID.empty())
 	{
-		if(!sniffWifi(wifiID))
+		if(!sniffWifi(&wifiID[0], "./bin/scans/sniffResults"))
 		{
 			cerr << "Scan failed, using old data." << endl;
 		}
