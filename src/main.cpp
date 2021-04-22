@@ -40,48 +40,47 @@ int main(int argc, char *argv[])
 	// MonsterBase monster(ssidHash);
 	// std::cout << monster.toStr() << '\n';
 
-	// CODE BELOW CURRENTLY BROKEN BUT WILL FIX SOON
 
 	// Create monster instance
-	// switch (type)
-	// {
-	// 	case Ghost:
-	// 	{
-	// 		GhostType ghost(ssid);
-	// 		std::cout << ghost.toStr() << '\n';
-	// 		break;
-	// 	}
-	// 	case Fire:
-	// 	{
-	// 		FireType fire(ssid);
-	// 		std::cout << fire.toStr() << '\n';
-	// 		break;
-	// 	}
-	// 	case Water:
-	// 	{
-	// 		WaterType water(ssid);
-	// 		std::cout << water.toStr() << '\n';
-	// 		break;
-	// 	}
-	// 	case Forest:
-	// 	{
-	// 		ForestType forest(ssid);
-	// 		std::cout << forest.toStr() << '\n';
-	// 		break;
-	// 	}
-	// 	case Rock:
-	// 	{
-	// 		RockType rock(ssid);
-	// 		std::cout << rock.toStr() << '\n';
-	// 		break;
-	// 	}
-	// 	case Ice:
-	// 	{
-	// 		IceType ice(ssid);
-	// 		std::cout << ice.toStr() << '\n';
-	// 		break;
-	// 	}
-	// }
+	switch (type)
+	{
+		case Ghost:
+		{
+			GhostType ghost(ssidHash);
+			std::cout << ghost.toStr() << '\n';
+			break;
+		}
+		case Fire:
+		{
+			FireType fire(ssidHash);
+			std::cout << fire.toStr() << '\n';
+			break;
+		}
+		case Water:
+		{
+			WaterType water(ssidHash);
+			std::cout << water.toStr() << '\n';
+			break;
+		}
+		case Forest:
+		{
+			ForestType forest(ssidHash);
+			std::cout << forest.toStr() << '\n';
+			break;
+		}
+		case Rock:
+		{
+			RockType rock(ssidHash);
+			std::cout << rock.toStr() << '\n';
+			break;
+		}
+		case Ice:
+		{
+			IceType ice(ssidHash);
+			std::cout << ice.toStr() << '\n';
+			break;
+		}
+	}
 
 	return 0;
 }
