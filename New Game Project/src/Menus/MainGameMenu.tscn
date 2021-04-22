@@ -1,0 +1,117 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/backgrounds/menu_background.png" type="Texture" id=1]
+[ext_resource path="res://assets/menus/title_screen/fonts/monsterrat_24.tres" type="DynamicFont" id=2]
+
+[node name="MainGameMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 1024.13 ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpawnButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.5
+margin_top = -10.0
+margin_right = 54.5
+margin_bottom = 90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SpawnButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.5
+margin_top = -37.5
+margin_right = 44.5
+margin_bottom = 37.5
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 2 )
+text = "Seriously
+don't 
+press!"
+align = 1
+valign = 1
+
+[node name="SandwhichMenu" type="VBoxContainer" parent="."]
+margin_right = 80.0
+margin_bottom = 80.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SandwhichButton" type="Button" parent="SandwhichMenu"]
+margin_right = 80.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="SandwhichMenu/SandwhichButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -33.5
+margin_top = -7.0
+margin_right = 33.5
+margin_bottom = 7.0
+text = "Sandwhich"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MonsterLibrary" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -80.0
+margin_bottom = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MonsterLibraryButton" type="Button" parent="MonsterLibrary"]
+margin_right = 79.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MonsterLibrary/MonsterLibraryButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.5
+margin_top = -8.12245
+margin_right = 21.5
+margin_bottom = 5.87755
+text = "Library"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
