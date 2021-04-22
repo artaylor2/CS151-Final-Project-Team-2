@@ -8,7 +8,7 @@
 
 enum monstTypes {Undefined = -1, Ghost, Fire, Water, Forest, Rock, Ice};
 
-std::string ssidSScan();
+std::string ssidScan();
 int hashSsid(std::string ssid);
 int determineType(int ssidHash);
 

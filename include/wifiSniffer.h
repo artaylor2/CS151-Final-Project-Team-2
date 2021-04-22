@@ -22,6 +22,9 @@
  *            not allowed under ISO C++. This header will not compile with the -pedantic flag.
  */
 
+#ifndef SNIFF_H
+#define SNIFF_H
+
 #include <fstream>      // ofstream
 #include <iostream>     // cerr and cout
 #include <stdio.h>      // c-string handling for iwlib
@@ -54,3 +57,5 @@ bool sniffWifi(char* deviceID = "wifi0", string filePath = "./bin/scans/sniffRes
 
 // Get the ID of the system's wireless hardware
 string getDeviceID();
+
+#endif

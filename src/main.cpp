@@ -14,7 +14,7 @@
 
 int main(int argc, char *argv[])
 {
-	std::string ssid = ssidSScan();
+	std::string ssid = ssidScan();
 
 	// Generate randoom number from ssid
 	int ssidHash = hashSsid(ssid);
