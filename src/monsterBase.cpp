@@ -100,8 +100,12 @@ void MonsterBase::eat(Food &f)
     {
         this->hunger = maxHunger; // Set to max
     }
-    // Update last fed time
-    // this->lastHungerTick = time(nullptr);
+
+    this->hp += (f.hungerRestored / 2); // Add half of food restored to hp
+    if(this->hp > maxHp) // If is higher than maximum
+    {
+        this->hp = maxHp; // Set to max
+    }
 }
 
 void MonsterBase::play()
