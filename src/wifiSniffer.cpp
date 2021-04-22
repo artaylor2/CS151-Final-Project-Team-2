@@ -79,6 +79,12 @@ bool sniffWifi(char* deviceID, string filePath)
         resultPtr = resultPtr->next;        
     }
 
+    if(resultVector.empty())
+    {
+        cerr << "No results found" << endl;
+        return false;
+    }
+
     // Sort the results
     quickSort(resultVector, 0, resultVector.size()-1);
 
