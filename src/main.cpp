@@ -3,13 +3,19 @@
 #include <cstdlib>
 #include <sstream>
 #include "rfRancher.h"
+#include "forestType.h"
+#include "waterType.h"
+#include "fireType.h"
+#include "rockType.h"
+#include "iceType.h"
+#include "ghostType.h"
 #include "monsterBase.h"
-// #include "wifiSniffer.h"
+#include "wifiSniffer.h"
 
 int main(int argc, char *argv[])
 {
 	// Open wifisniffer file
-	std::ifstream in("bin/scans/ResHallF3");
+	std::ifstream in("bin/scans/ResHallF1");
 	if(!in.is_open())
 	{
 		std::cerr << "File failed to open\n";
@@ -30,33 +36,51 @@ int main(int argc, char *argv[])
 	// Determine monster type
 	int type = determineType(ssidHash);
 
-	// Temp monster creation for testing
-	MonsterBase monster(ssidHash);
-	std::cout << monster.toStr() << '\n';
+	// Temp monster creation for testing base class
+	// MonsterBase monster(ssidHash);
+	// std::cout << monster.toStr() << '\n';
 
-	// Not yet implemented
+	// CODE BELOW CURRENTLY BROKEN BUT WILL FIX SOON
 
-	// // Create monster instance
+	// Create monster instance
 	// switch (type)
 	// {
-	// case Ghost:
-	// 	/* code */
-	// 	break;
-	// case Fire:
-	// 	/* code */
-	// 	break;
-	// case Water:
-	// 	/* code */
-	// 	break;
-	// case Forest:
-	// 	/* code */
-	// 	break;
-	// case Rock:
-	// 	/* code */
-	// 	break;
-	// case Ice:
-	// 	/* code */
-	// 	break;
+	// 	case Ghost:
+	// 	{
+	// 		GhostType ghost(ssid);
+	// 		std::cout << ghost.toStr() << '\n';
+	// 		break;
+	// 	}
+	// 	case Fire:
+	// 	{
+	// 		FireType fire(ssid);
+	// 		std::cout << fire.toStr() << '\n';
+	// 		break;
+	// 	}
+	// 	case Water:
+	// 	{
+	// 		WaterType water(ssid);
+	// 		std::cout << water.toStr() << '\n';
+	// 		break;
+	// 	}
+	// 	case Forest:
+	// 	{
+	// 		ForestType forest(ssid);
+	// 		std::cout << forest.toStr() << '\n';
+	// 		break;
+	// 	}
+	// 	case Rock:
+	// 	{
+	// 		RockType rock(ssid);
+	// 		std::cout << rock.toStr() << '\n';
+	// 		break;
+	// 	}
+	// 	case Ice:
+	// 	{
+	// 		IceType ice(ssid);
+	// 		std::cout << ice.toStr() << '\n';
+	// 		break;
+	// 	}
 	// }
 
 	return 0;
