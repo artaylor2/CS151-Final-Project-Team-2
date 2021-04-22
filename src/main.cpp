@@ -14,12 +14,18 @@
 
 int main(int argc, char *argv[])
 {
-	// Sniff wifi ssids
-	if(!sniffWifi())
+	if(string wifiID = getDeviceID())
 	{
-		std::cerr << "Scan failed.\n";
+		if(!sniffWifi(wifiID))
+		{
+			cerr << "Scan failed, using old data." << endl;
+		}
 	}
-
+	else
+	{
+		cerr << "Couldn't get device ID, using old data." << endl;
+	}
+	
 	// Open sniffer results file
 	std::ifstream in("bin/scans/sniffResults");
 	if(!in.is_open())
