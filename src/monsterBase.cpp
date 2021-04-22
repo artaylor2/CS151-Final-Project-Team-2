@@ -132,8 +132,8 @@ void MonsterBase::doTick() // Remove 1 point of hunger and happiness per hour
     int curTime = time(nullptr);
     int hungerRemove = curTime - this->lastHungerTick;
     int HappyRemove = curTime - this->LastHappyTick;
-    hungerRemove /= 3600; // Remove 1 per hour
-    HappyRemove /= 3600; // Remove 1 per hour
+    hungerRemove /= 3600.0; // Remove 1 per hour
+    HappyRemove /= 3600.0; // Remove 1 per hour
 
     // Remove points from hunger
     this->hunger -= hungerRemove;

@@ -14,32 +14,7 @@
 
 int main(int argc, char *argv[])
 {
-	std::string wifiID = getDeviceID();
-	
-	if(!wifiID.empty())
-	{
-		if(!sniffWifi(&wifiID[0], "./bin/scans/sniffResults"))
-		{
-			cerr << "Scan failed, using old data." << endl;
-		}
-	}
-	else
-	{
-		cerr << "Couldn't get device ID, using old data." << endl;
-	}
-	
-	// Open sniffer results file
-	std::ifstream in("bin/scans/sniffResults");
-	if(!in.is_open())
-	{
-		std::cerr << "File failed to open\n";
-		std::exit(1);
-	}
-
-	// Get strongest ssid
-	std::string ssid;
-	getline(in, ssid);
-	in.close(); // Close the file
+	std::string ssid = ssidSScan();
 
 	// Generate randoom number from ssid
 	int ssidHash = hashSsid(ssid);

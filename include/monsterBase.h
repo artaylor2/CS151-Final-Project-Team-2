@@ -40,12 +40,12 @@ public:
 protected:
     std::string name;
     int type; // Enum from rfRancher.h
-    int happiness; // 0-maxHappiness
+    double happiness; // 0-maxHappiness
     int maxHappiness; // 15
     int LastHappyTick; // last time happiness was updated
-    int hp; // 0-maxHp
+    double hp; // 0-maxHp
     int maxHp; // 20-50
-    int hunger; // 0-maxHunger
+    double hunger; // 0-maxHunger
     int maxHunger; // 5-20
     int lastHungerTick; // last time hunger was updated
     bool isDead; // current living status
