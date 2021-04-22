@@ -6,6 +6,6 @@
 class RockType : public MonsterBase
 {
 public:
-
+    RockType(int ssidHash);
 };
 #endif

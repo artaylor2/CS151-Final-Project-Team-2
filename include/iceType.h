@@ -6,7 +6,7 @@
 class IceType : public MonsterBase
 {
 public:
-
+    IceType(int ssidHash);
 };
 
 #endif

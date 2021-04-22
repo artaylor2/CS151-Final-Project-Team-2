@@ -6,7 +6,7 @@
 class ForestType : public MonsterBase
 {
 public:
-
+    ForestType(int ssidHash);
 };
 
 #endif

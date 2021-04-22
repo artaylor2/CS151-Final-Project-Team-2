@@ -6,7 +6,7 @@
 class WaterType : public MonsterBase
 {
 public:
-
+    WaterType(int ssidHash);
 };
 
 #endif

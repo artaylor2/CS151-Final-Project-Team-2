@@ -6,7 +6,7 @@
 class GhostType : public MonsterBase
 {
 public:
-    
+    GhostType(int ssidHash);
 };
 
 #endif

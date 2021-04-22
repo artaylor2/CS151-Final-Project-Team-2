@@ -6,7 +6,7 @@
 class FireType : public MonsterBase
 {
 public:
-
+    FireType(int ssidHash);
 };
 
 #endif
