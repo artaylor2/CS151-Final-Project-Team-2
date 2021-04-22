@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <sstream>
+#include <iomanip>
 #include "rfRancher.h"
 #include "forestType.h"
 #include "waterType.h"

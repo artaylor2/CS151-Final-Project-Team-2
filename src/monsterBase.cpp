@@ -67,7 +67,7 @@ MonsterBase::MonsterBase(int ssidHash)
 std::string MonsterBase::toStr() const
 {
     std::stringstream strS("");
-    strS << name << " " << type << " " << happiness << " " 
+    strS << std::fixed << std::setprecision(10) << name << " " << type << " " << happiness << " " 
          << maxHappiness << " " << LastHappyTick << " " << hp << " "
          << maxHp << " " << hunger << " " << maxHunger << " " 
          << lastHungerTick << " " << isDead << " " 
@@ -130,8 +130,8 @@ void MonsterBase::doTick() // Remove 1 point of hunger and happiness per hour
 
     // Calculate points to remove
     int curTime = time(nullptr);
-    int hungerRemove = curTime - this->lastHungerTick;
-    int HappyRemove = curTime - this->LastHappyTick;
+    double hungerRemove = curTime - this->lastHungerTick;
+    double HappyRemove = curTime - this->LastHappyTick;
     hungerRemove /= 3600.0; // Remove 1 per hour
     HappyRemove /= 3600.0; // Remove 1 per hour
 

@@ -2,8 +2,17 @@
 
 std::string ssidScan()
 {
-    std::string wifiID = getDeviceID();
-	
+	std::string wifiID = "";
+
+	try
+	{
+    	wifiID = getDeviceID();
+	}
+	catch(std::logic_error err)
+	{
+
+	}
+
 	if(!wifiID.empty())
 	{
 		if(!sniffWifi(&wifiID[0], "./bin/scans/sniffResults"))
@@ -25,8 +34,9 @@ std::string ssidScan()
 	}
 
 	// Get strongest ssid
-	std::string ssid;
+	std::string ssid = "";
 	getline(in, ssid);
+	std::cout << ssid << '\n';
 	in.close(); // Close the file
     return ssid;
 }
