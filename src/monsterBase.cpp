@@ -57,8 +57,8 @@ MonsterBase::MonsterBase(int ssidHash)
     strS.str(tempB);
     strS >> std::hex >> this->color.b;
 
-    // Name monster
-    setName();
+    // Set blank name
+    this->name = "";
 
     // set temporary type for child classes
     this->type = Undefined;
@@ -95,12 +95,14 @@ void MonsterBase::eat(Food &f)
         return;
     }
 
+    // Heal hunger
     this->hunger += f.hungerRestored; // Add food restored to hunger
     if(this->hunger > maxHunger) // If is higher than maximum
     {
         this->hunger = maxHunger; // Set to max
     }
 
+    // Heal hp
     this->hp += (f.hungerRestored / 2); // Add half of food restored to hp
     if(this->hp > maxHp) // If is higher than maximum
     {

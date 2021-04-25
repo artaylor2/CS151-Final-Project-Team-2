@@ -7,6 +7,7 @@ class IceType : public MonsterBase
 {
 public:
     IceType(int ssidHash);
+    void doTick(); // Hunger rate based on happiness
 };
 
 #endif
