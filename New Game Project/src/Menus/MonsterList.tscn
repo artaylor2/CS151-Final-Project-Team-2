@@ -54,6 +54,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+scene_to_load = "res://src/Menus/BarkatMenu.tscn"
 
 [node name="Monster1" type="Label" parent="MonsterList/Row1/Barkat"]
 anchor_right = 1.0
@@ -64,35 +65,6 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
 text = "Barkat"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="MenuButton2" type="Button" parent="MonsterList/Row1"]
-margin_left = 212.0
-margin_right = 420.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 208, 120 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-flat = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MonsterList/Row1/MenuButton2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = -7.62939e-06
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 5
-text = "Forest Monster"
 align = 1
 valign = 1
 __meta__ = {
@@ -116,6 +88,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+scene_to_load = "res://src/Menus/OldManCarp.tscn"
 
 [node name="Label" type="Label" parent="MonsterList/Row2/OldManCarp"]
 anchor_right = 1.0
@@ -129,33 +102,6 @@ align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
-}
-
-[node name="Monster4" type="Button" parent="MonsterList/Row2"]
-margin_left = 212.0
-margin_right = 420.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 208, 60 )
-size_flags_horizontal = 0
-flat = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MonsterList/Row2/Monster4"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 5
-text = "Ocean Monster"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
 }
 
 [node name="Row3" type="HBoxContainer" parent="MonsterList"]
@@ -174,6 +120,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+scene_to_load = "res://src/Menus/Igneous.tscn"
 
 [node name="Label" type="Label" parent="MonsterList/Row3/Igneous"]
 anchor_right = 1.0
@@ -183,33 +130,6 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
 text = "Igneous"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="MenuButton2" type="Button" parent="MonsterList/Row3"]
-margin_left = 212.0
-margin_right = 420.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 208, 60 )
-size_flags_horizontal = 0
-flat = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MonsterList/Row3/MenuButton2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 5
-text = "Volcano Monster"
 align = 1
 valign = 1
 __meta__ = {
@@ -233,6 +153,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+scene_to_load = "res://src/Menus/Sledge.tscn"
 
 [node name="Label" type="Label" parent="MonsterList/Row4/Sledge"]
 anchor_right = 1.0
@@ -242,33 +163,6 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
 text = "Sledge"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="MenuButton2" type="Button" parent="MonsterList/Row4"]
-margin_left = 212.0
-margin_right = 420.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 208, 60 )
-size_flags_horizontal = 0
-flat = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MonsterList/Row4/MenuButton2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 5
-text = "Mountain Monster"
 align = 1
 valign = 1
 __meta__ = {
@@ -291,6 +185,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+scene_to_load = "res://src/Menus/Snowcrash.tscn"
 
 [node name="Label" type="Label" parent="MonsterList/Row5/Snowcrash"]
 anchor_right = 1.0
@@ -300,32 +195,6 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
 text = "Snowcrash"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="MenuButton2" type="Button" parent="MonsterList/Row5"]
-margin_left = 212.0
-margin_right = 420.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 208, 60 )
-flat = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MonsterList/Row5/MenuButton2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 5
-text = "Glacier Monster"
 align = 1
 valign = 1
 __meta__ = {
@@ -348,6 +217,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+scene_to_load = "res://src/Menus/Grimoir.tscn"
 
 [node name="Label" type="Label" parent="MonsterList/Row6/Grimoire"]
 anchor_right = 1.0
@@ -357,32 +227,6 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
 text = "Grimoire"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="MenuButton2" type="Button" parent="MonsterList/Row6"]
-margin_left = 212.0
-margin_right = 420.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 208, 60 )
-flat = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MonsterList/Row6/MenuButton2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 5
-text = "Cave Monster"
 align = 1
 valign = 1
 __meta__ = {

@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/backgrounds/marc-szeglat-I1MGVZ42wnU-unsplash.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/menus/title_screen/buttons/MenuButton.gd" type="Script" id=2]
 [ext_resource path="res://src/Interfaces/Interface.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sprites/cat.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/tileset.png" type="Texture" id=5]
+[ext_resource path="res://assets/menus/title_screen/fonts/montserrat_48.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/backgrounds/FireBackground.png" type="Texture" id=7]
+[ext_resource path="res://assets/menus/CloseButton.png" type="Texture" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
@@ -98,18 +101,14 @@ __meta__ = {
 "_edit_vertical_guides_": [ 2805.0, 1200.0 ]
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -11
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = 0
 
-[node name="background" type="TextureRect" parent="CanvasLayer"]
+[node name="background" type="TextureRect" parent="BackgroundLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -353.345
-margin_top = 327.347
-margin_right = 3718.65
-margin_bottom = 2759.35
-rect_scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 2 )
+margin_bottom = -324.0
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -122,32 +121,106 @@ centered_textures = true
 collision_layer = 8
 collision_mask = 2147483648
 format = 1
-tile_data = PoolIntArray( 65535, 0, 0, 0, 0, 0, 27, 0, 0, 28, 0, 0, 131071, 0, 0, 65536, 0, 0, 65563, 0, 0, 65564, 0, 0, 196607, 0, 0, 131072, 0, 0, 131099, 0, 0, 131100, 0, 0, 262143, 0, 0, 196608, 0, 0, 196635, 0, 0, 196636, 0, 0, 327679, 0, 0, 262144, 0, 0, 262171, 0, 0, 262172, 0, 0, 393215, 0, 0, 327680, 0, 0, 327707, 0, 0, 327708, 0, 0, 458751, 0, 0, 393216, 0, 0, 393243, 0, 0, 393244, 0, 0, 524287, 0, 0, 458752, 0, 0, 458779, 0, 0, 458780, 0, 0, 589823, 0, 0, 524288, 0, 0, 524315, 0, 0, 524316, 0, 0, 655359, 0, 0, 589824, 0, 0, 589851, 0, 0, 589852, 0, 0, 720895, 0, 0, 655360, 0, 0, 655375, 0, 0, 655387, 0, 0, 655388, 0, 0, 786431, 0, 0, 720896, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720917, 0, 0, 720918, 0, 0, 720923, 0, 0, 720924, 0, 0, 851967, 0, 0, 786432, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786452, 0, 0, 786453, 0, 0, 786454, 0, 0, 786455, 0, 0, 786459, 0, 0, 786460, 0, 0, 917503, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 851989, 0, 0, 851990, 0, 0, 851991, 0, 0, 851992, 0, 0, 851993, 0, 0, 851994, 0, 0, 851995, 0, 0, 851996, 0, 0, 983039, 0, 0, 917504, 0, 0, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917508, 0, 0, 917509, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 917520, 0, 0, 917521, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 917525, 0, 0, 917526, 0, 0, 917527, 0, 0, 917528, 0, 0, 917529, 0, 0, 917530, 0, 0, 917531, 0, 0, 917532, 0, 0, 1048575, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0, 983062, 0, 0, 983063, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983067, 0, 0, 983068, 0, 0 )
+tile_data = PoolIntArray( 65535, 0, 0, 7, 0, 0, 131071, 0, 0, 65543, 0, 0, 196607, 0, 0, 131079, 0, 0, 262143, 0, 0, 196615, 0, 0, 327679, 0, 0, 262151, 0, 0, 393215, 0, 0, 327687, 0, 0, 458751, 0, 0, 393223, 0, 0, 524287, 0, 0, 458759, 0, 0, 589823, 0, 0, 524295, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0 )
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
+layer = 2
 
-[node name="Interface" parent="InterfaceLayer" instance=ExtResource( 3 )]
+[node name="MenuControl" type="Control" parent="InterfaceLayer"]
 margin_left = -1.0
-margin_top = -0.82843
-margin_right = 0.0
-margin_bottom = -0.82843
+margin_top = 2.0
+margin_right = 575.0
+margin_bottom = 1026.0
+rect_min_size = Vector2( 576, 1024 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Barkat" type="KinematicBody2D" parent="."]
-position = Vector2( 496.125, -151.624 )
+[node name="CloseContainer" type="CenterContainer" parent="InterfaceLayer/MenuControl"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -92.0
+margin_bottom = 86.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="Button" parent="InterfaceLayer/MenuControl/CloseContainer"]
+margin_right = 92.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 60, 60 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource( 9 )
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+scene_to_load = "res://src/Menus/MainGameMenu.tscn"
+
+[node name="CaptureContainer" type="CenterContainer" parent="InterfaceLayer/MenuControl"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Capture" type="Button" parent="InterfaceLayer/MenuControl/CaptureContainer"]
+margin_left = 108.0
+margin_right = 468.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="InterfaceLayer/MenuControl/CaptureContainer/Capture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Label"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InterfaceLayer" type="CanvasLayer" parent="InterfaceLayer/MenuControl"]
+
+[node name="Interface" parent="InterfaceLayer/MenuControl/InterfaceLayer" instance=ExtResource( 3 )]
+anchor_left = -0.002
+anchor_top = 0.814
+margin_left = 0.152
+margin_top = 0.463989
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="CharacterLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Barkat" type="KinematicBody2D" parent="CharacterLayer"]
+position = Vector2( 495.125, -149.624 )
 collision_mask = 8
 script = ExtResource( 1 )
 gravity = 4000.0
 speed = Vector2( 800, 1400 )
 
-[node name="player" type="Sprite" parent="Barkat"]
+[node name="player" type="Sprite" parent="CharacterLayer/Barkat"]
 position = Vector2( -3.3661, -4.43024 )
 scale = Vector2( 0.135581, 0.164862 )
 texture = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Barkat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterLayer/Barkat"]
 shape = SubResource( 6 )
 
-[node name="Camera2D" type="Camera2D" parent="Barkat"]
+[node name="Camera2D" type="Camera2D" parent="CharacterLayer/Barkat"]
 current = true
 zoom = Vector2( 2, 2 )
 limit_left = 0

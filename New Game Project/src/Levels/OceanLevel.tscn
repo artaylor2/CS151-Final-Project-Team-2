@@ -1,30 +1,237 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://src/Levels/LevelTemplate.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/backgrounds/marina-YmQ0-nmWcV0-unsplash.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/menus/title_screen/fonts/montserrat_48.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/menus/title_screen/buttons/MenuButton.gd" type="Script" id=2]
+[ext_resource path="res://src/Levels/OceanLevelMenuControl.gd" type="Script" id=3]
+[ext_resource path="res://assets/backgrounds/FireBackground.png" type="Texture" id=4]
+[ext_resource path="res://assets/menus/CloseButton.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/cat.jpg" type="Texture" id=6]
+[ext_resource path="res://assets/tileset.png" type="Texture" id=7]
+[ext_resource path="res://src/Actors/Player.gd" type="Script" id=8]
+[ext_resource path="res://src/Interfaces/Interface.tscn" type="PackedScene" id=9]
 
-[node name="LevelType2" instance=ExtResource( 1 )]
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
 
-[node name="background" parent="CanvasLayer" index="0"]
-anchor_right = 0.984
-anchor_bottom = 1.152
-margin_left = -29.0
-margin_top = 0.0
-margin_right = 4147.38
-margin_bottom = 2764.8
-rect_scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 2 )
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
 
-[node name="TileMap" parent="." index="1"]
-position = Vector2( 76.3274, -4.48984 )
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
 
-[node name="Camera2D" parent="Player" index="2"]
-visible = false
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
 
-[node name="Interface" parent="InterfaceLayer" index="0"]
-margin_left = -1.24487
-margin_top = 4.24493
-margin_right = -0.244873
-margin_bottom = 4.24493
+[sub_resource type="TileSet" id=5]
+0/name = "tileset.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 80, 0, 80, 80 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "tileset.png 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 80, 0, 80, 80 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "tileset.png 2"
+2/texture = ExtResource( 7 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 80, 0, 80, 80 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 4 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
 
-[editable path="Player"]
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 40, 52 )
+
+[node name="OceanLevel" type="Node2D"]
+position = Vector2( -1, 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1289.0 ],
+"_edit_vertical_guides_": [ 2805.0, 1200.0 ]
+}
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="background" type="TextureRect" parent="BackgroundLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -324.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 5 )
+cell_size = Vector2( 80, 80 )
+cell_custom_transform = Transform2D( 80, 0, 0, 80, 0, 0 )
+centered_textures = true
+collision_layer = 8
+collision_mask = 2147483648
+format = 1
+tile_data = PoolIntArray( 65535, 0, 0, 7, 0, 0, 131071, 0, 0, 65543, 0, 0, 196607, 0, 0, 131079, 0, 0, 262143, 0, 0, 196615, 0, 0, 327679, 0, 0, 262151, 0, 0, 393215, 0, 0, 327687, 0, 0, 458751, 0, 0, 393223, 0, 0, 524287, 0, 0, 458759, 0, 0, 589823, 0, 0, 524295, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0 )
+
+[node name="InterfaceLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="MenuControl" type="Control" parent="InterfaceLayer"]
+margin_left = -1.0
+margin_top = 2.0
+margin_right = 575.0
+margin_bottom = 1026.0
+rect_min_size = Vector2( 576, 1024 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseContainer" type="CenterContainer" parent="InterfaceLayer/MenuControl"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -92.0
+margin_bottom = 86.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="Button" parent="InterfaceLayer/MenuControl/CloseContainer"]
+margin_right = 92.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 60, 60 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource( 5 )
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+scene_to_load = "res://src/Menus/MainGameMenu.tscn"
+
+[node name="CaptureContainer" type="CenterContainer" parent="InterfaceLayer/MenuControl"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Capture" type="Button" parent="InterfaceLayer/MenuControl/CaptureContainer"]
+margin_left = 108.0
+margin_right = 468.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="InterfaceLayer/MenuControl/CaptureContainer/Capture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Label"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InterfaceLayer" type="CanvasLayer" parent="InterfaceLayer/MenuControl"]
+
+[node name="Interface" parent="InterfaceLayer/MenuControl/InterfaceLayer" instance=ExtResource( 9 )]
+anchor_left = -0.002
+anchor_top = 0.814
+margin_left = 0.152
+margin_top = 0.463989
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="CharacterLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Barkat" type="KinematicBody2D" parent="CharacterLayer"]
+position = Vector2( 495.125, -149.624 )
+collision_mask = 8
+script = ExtResource( 8 )
+gravity = 4000.0
+speed = Vector2( 800, 1400 )
+
+[node name="player" type="Sprite" parent="CharacterLayer/Barkat"]
+position = Vector2( -3.3661, -4.43024 )
+scale = Vector2( 0.135581, 0.164862 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterLayer/Barkat"]
+shape = SubResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="CharacterLayer/Barkat"]
+current = true
+zoom = Vector2( 2, 2 )
+limit_left = 0
+limit_top = 0
+limit_right = 2250
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 7.0
+drag_margin_left = 0.0
+drag_margin_right = 0.0

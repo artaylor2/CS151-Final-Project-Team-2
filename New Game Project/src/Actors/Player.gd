@@ -1,6 +1,6 @@
 extends Actor	# Inherit everything from the Actor.gd
 
-func _physics_process(delta: float) -> void:	# Godot will run this function along with the parent physics function
+func _physics_process(_delta: float) -> void:	# Godot will run this function along with the parent physics function
 	var direction = get_direction()	# Keep variables locally in functions to prevent outside functions from messing with variables
 	# Returns float and detects how far right it is between 1 and 0. Partial depressions are in between
 	# Doing the subtraction ensures that we have 0 movement if the player is pressing both keys at the same time
