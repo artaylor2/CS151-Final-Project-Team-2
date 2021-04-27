@@ -7,6 +7,7 @@ class FireType : public MonsterBase
 {
 public:
     FireType(int ssidHash);
+    void eat(Food &f); // Double hunger regen
 };
 
 #endif

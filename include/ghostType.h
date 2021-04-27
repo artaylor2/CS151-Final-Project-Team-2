@@ -7,6 +7,7 @@ class GhostType : public MonsterBase
 {
 public:
     GhostType(int ssidHash);
+    void doTick(); // Slower happiness ticks
 };
 
 #endif
