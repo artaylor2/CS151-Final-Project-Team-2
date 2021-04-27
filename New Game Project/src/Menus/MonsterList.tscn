@@ -1,0 +1,415 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/backgrounds/menu_background.png" type="Texture" id=1]
+[ext_resource path="res://assets/menus/title_screen/buttons/MenuButton.gd" type="Script" id=2]
+[ext_resource path="res://assets/menus/CloseButton.png" type="Texture" id=3]
+[ext_resource path="res://src/Menus/MonsterList.gd" type="Script" id=4]
+[ext_resource path="res://assets/menus/title_screen/fonts/monsterrat_24.tres" type="DynamicFont" id=5]
+
+[node name="MonsterList" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.12244
+margin_bottom = -1.12244
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MonsterList" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 80.0
+margin_top = 80.0
+margin_right = -76.0
+margin_bottom = -80.0
+rect_min_size = Vector2( 0, 80 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Row1" type="HBoxContainer" parent="MonsterList"]
+margin_right = 420.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 416, 120 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Barkat" type="Button" parent="MonsterList/Row1"]
+margin_right = 208.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 208, 120 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Monster1" type="Label" parent="MonsterList/Row1/Barkat"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -7.62939e-06
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Barkat"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MenuButton2" type="Button" parent="MonsterList/Row1"]
+margin_left = 212.0
+margin_right = 420.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 208, 120 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MonsterList/Row1/MenuButton2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -7.62939e-06
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Forest Monster"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Row2" type="HBoxContainer" parent="MonsterList"]
+margin_top = 124.0
+margin_right = 420.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 416, 120 )
+
+[node name="OldManCarp" type="Button" parent="MonsterList/Row2"]
+margin_right = 208.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 208, 60 )
+size_flags_horizontal = 0
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MonsterList/Row2/OldManCarp"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Old Man Carp"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Monster4" type="Button" parent="MonsterList/Row2"]
+margin_left = 212.0
+margin_right = 420.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 208, 60 )
+size_flags_horizontal = 0
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MonsterList/Row2/Monster4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Ocean Monster"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Row3" type="HBoxContainer" parent="MonsterList"]
+margin_top = 248.0
+margin_right = 420.0
+margin_bottom = 368.0
+rect_min_size = Vector2( 0, 120 )
+
+[node name="Igneous" type="Button" parent="MonsterList/Row3"]
+margin_right = 208.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 208, 60 )
+size_flags_horizontal = 0
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MonsterList/Row3/Igneous"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Igneous"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MenuButton2" type="Button" parent="MonsterList/Row3"]
+margin_left = 212.0
+margin_right = 420.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 208, 60 )
+size_flags_horizontal = 0
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MonsterList/Row3/MenuButton2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Volcano Monster"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Row4" type="HBoxContainer" parent="MonsterList"]
+margin_top = 372.0
+margin_right = 420.0
+margin_bottom = 492.0
+rect_min_size = Vector2( 0, 120 )
+
+[node name="Sledge" type="Button" parent="MonsterList/Row4"]
+margin_right = 208.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 208, 60 )
+size_flags_horizontal = 0
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MonsterList/Row4/Sledge"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Sledge"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MenuButton2" type="Button" parent="MonsterList/Row4"]
+margin_left = 212.0
+margin_right = 420.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 208, 60 )
+size_flags_horizontal = 0
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MonsterList/Row4/MenuButton2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Mountain Monster"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Row5" type="HBoxContainer" parent="MonsterList"]
+margin_top = 496.0
+margin_right = 420.0
+margin_bottom = 616.0
+rect_min_size = Vector2( 420, 120 )
+
+[node name="Snowcrash" type="Button" parent="MonsterList/Row5"]
+margin_right = 208.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 208, 60 )
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MonsterList/Row5/Snowcrash"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Snowcrash"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MenuButton2" type="Button" parent="MonsterList/Row5"]
+margin_left = 212.0
+margin_right = 420.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 208, 60 )
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MonsterList/Row5/MenuButton2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Glacier Monster"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Row6" type="HBoxContainer" parent="MonsterList"]
+margin_top = 620.0
+margin_right = 420.0
+margin_bottom = 740.0
+rect_min_size = Vector2( 0, 120 )
+
+[node name="Grimoire" type="Button" parent="MonsterList/Row6"]
+margin_right = 208.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 208, 60 )
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MonsterList/Row6/Grimoire"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Grimoire"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MenuButton2" type="Button" parent="MonsterList/Row6"]
+margin_left = 212.0
+margin_right = 420.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 208, 60 )
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MonsterList/Row6/MenuButton2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Cave Monster"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="CloseButton" type="CenterContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -92.0
+margin_top = 1.0
+margin_bottom = 87.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Button" parent="CloseButton"]
+margin_right = 92.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 60, 60 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource( 3 )
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Menus/MainGameMenu.tscn"

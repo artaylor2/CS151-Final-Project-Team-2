@@ -1,14 +1,92 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/backgrounds/menu_background.png" type="Texture" id=1]
-[ext_resource path="res://assets/menus/title_screen/fonts/monsterrat_24.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/menus/SandwhichButton.png" type="Texture" id=2]
+[ext_resource path="res://assets/menus/title_screen/buttons/MenuButton.gd" type="Script" id=3]
+[ext_resource path="res://assets/menus/title_screen/fonts/montserrat_48.tres" type="DynamicFont" id=4]
+[ext_resource path="res://src/Menus/MainGameMenu.gd" type="Script" id=5]
 
 [node name="MainGameMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 1024.13 ]
+}
+
+[node name="MonsterList" type="CenterContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -92.0
+margin_bottom = 86.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MonsterListButton" type="Button" parent="MonsterList"]
+margin_right = 92.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 92, 86 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Menus/MonsterList.tscn"
+
+[node name="Sandwhich" type="CenterContainer" parent="."]
+margin_right = 92.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 60, 60 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SandwhichButton" type="Button" parent="Sandwhich"]
+margin_right = 92.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 92, 86 )
+icon = ExtResource( 2 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spawn" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -30.0
+margin_right = 180.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpawnButton" type="Button" parent="Spawn"]
+margin_right = 360.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Spawn/SpawnButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Label"
+__meta__ = {
+"_edit_use_anchors_": false
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -21,97 +99,5 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 4
 __meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SpawnButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -45.5
-margin_top = -10.0
-margin_right = 54.5
-margin_bottom = 90.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="SpawnButton"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -44.5
-margin_top = -37.5
-margin_right = 44.5
-margin_bottom = 37.5
-size_flags_horizontal = 3
-size_flags_vertical = 7
-custom_fonts/font = ExtResource( 2 )
-text = "Seriously
-don't 
-press!"
-align = 1
-valign = 1
-
-[node name="SandwhichMenu" type="VBoxContainer" parent="."]
-margin_right = 80.0
-margin_bottom = 80.0
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SandwhichButton" type="Button" parent="SandwhichMenu"]
-margin_right = 80.0
-margin_bottom = 80.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="SandwhichMenu/SandwhichButton"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -33.5
-margin_top = -7.0
-margin_right = 33.5
-margin_bottom = 7.0
-text = "Sandwhich"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MonsterLibrary" type="VBoxContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -80.0
-margin_bottom = 80.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MonsterLibraryButton" type="Button" parent="MonsterLibrary"]
-margin_right = 79.0
-margin_bottom = 80.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="MonsterLibrary/MonsterLibraryButton"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -21.5
-margin_top = -8.12245
-margin_right = 21.5
-margin_bottom = 5.87755
-text = "Library"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
