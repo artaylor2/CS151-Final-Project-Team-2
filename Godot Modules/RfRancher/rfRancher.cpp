@@ -18,6 +18,7 @@ int RfRancher::hashSsid(String ssid)
     }
 
     total = abs(total);
+
     return total;
 }
 

@@ -1,8 +1,8 @@
 #include "monsterBase.h"
 
 MonsterBase::MonsterBase()
-{
-    int ssidHash = 1; // Set default SSID hash
+{   
+    int ssidHash = 1; // Set default hash for default constructor
 
     this->isDead = false; // The monster is currently living
 
@@ -20,50 +20,39 @@ MonsterBase::MonsterBase()
     this->lastHungerTick = time(nullptr); // Set last fed to current time
 
     // Create rgb values by coverting int to Hex
-    std::stringstream strS("");
-    strS << std::hex << ssidHash;
-    std::string hexColor = strS.str();
+    // std::stringstream strS("");
+    // strS << std::hex << ssidHash;
+    String hexColor = vformat("%x", ssidHash);
     if(hexColor.size() == 5) // Smallest possible value has 5 digits
     {
         hexColor += "0"; // Append a zero to make it 6 chars
-        strS.str(hexColor);
     }
 
-    std::string tempR = "", tempG = "", tempB = ""; // Hold parts of hex color
+    String tempR = "", tempG = "", tempB = ""; // Hold parts of hex color
 
     // Feed in the red values from hex color
-    tempR += strS.get();
-    tempR += strS.get();
+    tempR = hexColor.substr(0,2);
 
     // Green values from hex color
-    tempG += strS.get();
-    tempG += strS.get();
+    tempG = hexColor.substr(2,2);
 
     // Blue values from hex color
-    tempB += strS.get();
-    tempB += strS.get();
+    tempB = hexColor.substr(4,2);
 
     // Convert to decimal and fill red
-    strS.str(tempR);
-    strS >> std::hex >> this->color.r;
+    color[0] = tempR.hex_to_int();
 
-    // Clear stream, Convert to decimal and fill Green
-    strS.str("");
-    strS.clear();
-    strS.str(tempG);
-    strS >> std::hex >> this->color.g;
+    // Convert to decimal and fill Green
+    color[1] = tempG.hex_to_int();
 
-    // Clear stream, Convert to decimal and fill Blue
-    strS.str("");
-    strS.clear();
-    strS.str(tempB);
-    strS >> std::hex >> this->color.b;
+    // Convert to decimal and fill Blue
+    color[2] = tempB.hex_to_int();
 
     // Set blank name
     this->name = "";
 
     // set temporary type for child classes
-    this->type = Undefined;
+    this->type = -1;
 }
 
 MonsterBase::MonsterBase(int ssidHash)
@@ -82,106 +71,77 @@ MonsterBase::MonsterBase(int ssidHash)
     this->hunger = this->maxHunger; // Full hunger by default
 
     this->lastHungerTick = time(nullptr); // Set last fed to current time
-
+    
     // Create rgb values by coverting int to Hex
-    std::stringstream strS("");
-    strS << std::hex << ssidHash;
-    std::string hexColor = strS.str();
+    // std::stringstream strS("");
+    // strS << std::hex << ssidHash;
+    String hexColor = vformat("%x", ssidHash);
     if(hexColor.size() == 5) // Smallest possible value has 5 digits
     {
         hexColor += "0"; // Append a zero to make it 6 chars
-        strS.str(hexColor);
     }
 
-    std::string tempR = "", tempG = "", tempB = ""; // Hold parts of hex color
+    String tempR = "", tempG = "", tempB = ""; // Hold parts of hex color
 
     // Feed in the red values from hex color
-    tempR += strS.get();
-    tempR += strS.get();
+    tempR = hexColor.substr(0,2);
 
     // Green values from hex color
-    tempG += strS.get();
-    tempG += strS.get();
+    tempG = hexColor.substr(2,2);
 
     // Blue values from hex color
-    tempB += strS.get();
-    tempB += strS.get();
+    tempB = hexColor.substr(4,2);
 
     // Convert to decimal and fill red
-    strS.str(tempR);
-    strS >> std::hex >> this->color.r;
+    color[0] = tempR.hex_to_int();
 
-    // Clear stream, Convert to decimal and fill Green
-    strS.str("");
-    strS.clear();
-    strS.str(tempG);
-    strS >> std::hex >> this->color.g;
+    // Convert to decimal and fill Green
+    color[1] = tempG.hex_to_int();
 
-    // Clear stream, Convert to decimal and fill Blue
-    strS.str("");
-    strS.clear();
-    strS.str(tempB);
-    strS >> std::hex >> this->color.b;
+    // Convert to decimal and fill Blue
+    color[2] = tempB.hex_to_int();
 
     // Set blank name
     this->name = "";
 
     // set temporary type for child classes
-    this->type = Undefined;
+    this->type = -1;
 }
 
-std::string MonsterBase::toStr() const
+void MonsterBase::setName(String newName)
 {
-    std::stringstream strS("");
-    strS << std::fixed << std::setprecision(10) << name << " " << type << " " << happiness << " " 
-         << maxHappiness << " " << LastHappyTick << " " << hp << " "
-         << maxHp << " " << hunger << " " << maxHunger << " " 
-         << lastHungerTick << " " << isDead << " " 
-         << color.r << " " << color.g << " " << color.b;
-    return strS.str();
+    name = newName;
 }
 
-void MonsterBase::setName()
+bool MonsterBase::eat(int food)
 {
     if(this->isDead) // Check if monster is still alive
     {
-        std::cout << this->name << " is dead\n";
-        return;
-    }
-
-    std::cout << "Give this monster a name: ";
-    getline(std::cin, name);
-}
-
-void MonsterBase::eat(Food &f)
-{
-    if(this->isDead) // Check if monster is still alive
-    {
-        std::cout << this->name << " is dead\n";
-        return;
+        return false;
     }
 
     // Heal hunger
-    this->hunger += f.hungerRestored; // Add food restored to hunger
+    this->hunger += food; // Add food restored to hunger
     if(this->hunger > maxHunger) // If is higher than maximum
     {
         this->hunger = maxHunger; // Set to max
     }
 
     // Heal hp
-    this->hp += (f.hungerRestored / 2); // Add half of food restored to hp
+    this->hp += (food / 2); // Add half of food restored to hp
     if(this->hp > maxHp) // If is higher than maximum
     {
         this->hp = maxHp; // Set to max
     }
+
+    return true;
 }
 
-void MonsterBase::play()
+bool MonsterBase::play()
 {
     if(this->isDead) // Check if monster is still alive
     {
-        std::cout << this->name << " is dead\n";
-        return;
+        return false;
     }
 
     this->happiness += 5; // Add 5 happiness
@@ -190,13 +150,14 @@ void MonsterBase::play()
         this->happiness = 15; // Set to max
     }
     // this->LastHappyTick = time(nullptr);
+
+    return true;
 }
 
 void MonsterBase::doTick() // Remove 1 point of hunger and happiness per hour
 {
     if(this->isDead) // Check if monster is still alive
     {
-        std::cout << this->name << " is dead\n";
         return;
     }
 
@@ -228,4 +189,34 @@ void MonsterBase::doTick() // Remove 1 point of hunger and happiness per hour
     {
         this->isDead = true;
     }
+}
+
+String MonsterBase::getName()
+{
+    return name;
+}
+
+String MonsterBase::getHappy()
+{
+    return vformat("%d / %d", happiness, maxHappiness);
+}
+String MonsterBase::getHunger()
+{
+    return vformat("%d / %d", hunger, maxHunger);
+}
+String MonsterBase::getTime()
+{
+    return vformat("%d", lastHungerTick);
+}
+
+void MonsterBase::_bind_methods()
+{
+    ClassDB::bind_method(D_METHOD("setName"), &MonsterBase::setName);    
+    ClassDB::bind_method(D_METHOD("eat"), &MonsterBase::eat);    
+    ClassDB::bind_method(D_METHOD("play"), &MonsterBase::play);    
+    ClassDB::bind_method(D_METHOD("doTick"), &MonsterBase::doTick);
+    ClassDB::bind_method(D_METHOD("getName"), &MonsterBase::getName);
+    ClassDB::bind_method(D_METHOD("getHappy"), &MonsterBase::getHappy);
+    ClassDB::bind_method(D_METHOD("getHunger"), &MonsterBase::getHunger);
+    ClassDB::bind_method(D_METHOD("getTime"), &MonsterBase::getTime);
 }

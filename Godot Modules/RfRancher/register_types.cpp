@@ -4,10 +4,12 @@
 
 #include "core/object/class_db.h"
 #include "rfRancher.h"
+#include "monsterBase.h"
 
 void register_rfrancher_types() 
 {
     ClassDB::register_class<RfRancher>();
+    ClassDB::register_class<MonsterBase>();
 }
 
 void unregister_rfrancher_types() 

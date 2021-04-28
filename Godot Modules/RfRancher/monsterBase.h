@@ -2,32 +2,33 @@
 #define MONSTERBASE_H
 
 #include <iostream> // Testing
-#include <sstream>
+#include <string>
 #include <iomanip>
 #include <ctime>
 
-#include "core/base/reference.h" // Godot reference wrapper
-
-struct Rgb
-{
-    int r, g, b;
-};
+#include "core/string/ustring.h"   // Godot string library
+#include "core/object/reference.h" // Godot reference wrapper
 
 class MonsterBase : public Reference
 {
-    GDCLASS(MonsterBase, Reference);
+    GDCLASS(MonsterBase, Reference)
 
 public:
-    MonsterBase(); // Default constructor as if SSID = 1
+    MonsterBase(); // Default constructor as if ssidHash == 1
     MonsterBase(int ssidHash); // Generates basic data from SSID
     // Default destructor will be created automatically
     virtual ~MonsterBase() = default;
     // Defined destructor unnecessary because no dynamic memory
-    std::string toStr() const;
-    void setName(); // May need refactoring for GUI integration
-    void eat(int f);
-    void play();
+    void setName(String newName); // May need refactoring for GUI integration
+    bool eat(int food);
+    bool play();
     void doTick(); // update happiness and hunger values
+
+    // Temp testing methods
+    String getName();
+    String getHappy();
+    String getHunger();
+    String getTime();    
 
 protected:
     String name;
@@ -41,9 +42,9 @@ protected:
     int maxHunger; // 5-20
     int lastHungerTick; // last time hunger was updated
     bool isDead; // current living status
-    Rgb color; // r 0-255, g 0-255, b 0-255
+    int color [3]; // r 0-255, g 0-255, b 0-255
 
-    static void _bind_methods(); // Godot method wrapper
+    static void _bind_methods(); // Godot method bindings
 };
 
 #endif
