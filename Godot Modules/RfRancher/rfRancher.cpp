@@ -1,11 +1,12 @@
 #include "rfRancher.h"
 
-String RfRancher::getMonster(String curSSID)
+MonsterBase * RfRancher::getMonster(String curSSID)
 {  
-    int newSSID = hashSsid(curSSID);
-    std::string strSSID = std::to_string(newSSID);
+    int newHash = hashSsid(curSSID);
+    MonsterBase * m = new MonsterBase;
+    m->init(newHash);
 
-    return String(strSSID.c_str());
+    return m;
 }
 
 int RfRancher::hashSsid(String ssid)

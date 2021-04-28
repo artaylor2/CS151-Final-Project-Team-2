@@ -6,6 +6,7 @@
 #include <sstream>
 #include <string>
 
+#include "monsterBase.h"
 #include "core/string/ustring.h"
 #include "core/object/reference.h" // Godot reference wrapper
 
@@ -15,7 +16,7 @@ class RfRancher : public Reference
     enum monstTypes {Undefined = -1, Ghost, Fire, Water, Forest, Rock, Ice};
 
 public:
-    String getMonster(String curSSID);
+    MonsterBase * getMonster(String curSSID);
 
 protected:
     static void _bind_methods();

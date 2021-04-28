@@ -20,14 +20,14 @@ MonsterBase::MonsterBase()
     this->lastHungerTick = time(nullptr); // Set last fed to current time
 
     // Create rgb values by coverting int to Hex
-    // std::stringstream strS("");
-    // strS << std::hex << ssidHash;
     String hexColor = vformat("%x", ssidHash);
-    if(hexColor.size() == 5) // Smallest possible value has 5 digits
+
+    while(hexColor.size() < 7)
     {
-        hexColor += "0"; // Append a zero to make it 6 chars
+        hexColor += '0';
     }
 
+    print_line(vformat("Color Hex: %s", hexColor));
     String tempR = "", tempG = "", tempB = ""; // Hold parts of hex color
 
     // Feed in the red values from hex color
@@ -55,7 +55,7 @@ MonsterBase::MonsterBase()
     this->type = -1;
 }
 
-MonsterBase::MonsterBase(int ssidHash)
+void MonsterBase::init(int ssidHash)
 {
     this->isDead = false; // The monster is currently living
 
@@ -73,13 +73,14 @@ MonsterBase::MonsterBase(int ssidHash)
     this->lastHungerTick = time(nullptr); // Set last fed to current time
     
     // Create rgb values by coverting int to Hex
-    // std::stringstream strS("");
-    // strS << std::hex << ssidHash;
     String hexColor = vformat("%x", ssidHash);
-    if(hexColor.size() == 5) // Smallest possible value has 5 digits
+
+    while(hexColor.size() < 7)
     {
-        hexColor += "0"; // Append a zero to make it 6 chars
+        hexColor += '0';
     }
+
+    print_line(vformat("Color Hex: %s", hexColor));
 
     String tempR = "", tempG = "", tempB = ""; // Hold parts of hex color
 
@@ -106,6 +107,8 @@ MonsterBase::MonsterBase(int ssidHash)
 
     // set temporary type for child classes
     this->type = -1;
+
+    return;
 }
 
 void MonsterBase::setName(String newName)
@@ -211,6 +214,7 @@ String MonsterBase::getTime()
 
 void MonsterBase::_bind_methods()
 {
+    ClassDB::bind_method(D_METHOD("init"), &MonsterBase::init);
     ClassDB::bind_method(D_METHOD("setName"), &MonsterBase::setName);    
     ClassDB::bind_method(D_METHOD("eat"), &MonsterBase::eat);    
     ClassDB::bind_method(D_METHOD("play"), &MonsterBase::play);    

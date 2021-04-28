@@ -15,10 +15,10 @@ class MonsterBase : public Reference
 
 public:
     MonsterBase(); // Default constructor as if ssidHash == 1
-    MonsterBase(int ssidHash); // Generates basic data from SSID
     // Default destructor will be created automatically
     virtual ~MonsterBase() = default;
     // Defined destructor unnecessary because no dynamic memory
+    void init(int ssidHash);
     void setName(String newName); // May need refactoring for GUI integration
     bool eat(int food);
     bool play();
