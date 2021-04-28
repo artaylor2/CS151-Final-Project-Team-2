@@ -1,0 +1,1 @@
+These folders contain the completed module source files ported from the source. Once they're confirmed to compile correctly from source the files are stored here for safekeeping.
