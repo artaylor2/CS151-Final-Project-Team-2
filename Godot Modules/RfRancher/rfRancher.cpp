@@ -1,6 +1,6 @@
 #include "rfRancher.h"
 
-MonsterBase * RfRancher::getMonster(String curSSID)
+Node * RfRancher::getMonster(String curSSID)
 {  
     int newHash = hashSsid(curSSID);
     MonsterBase * m = new MonsterBase;
@@ -31,4 +31,5 @@ int RfRancher::determineType(int ssidHash)
 void RfRancher::_bind_methods()
 {
     ClassDB::bind_method(D_METHOD("getMonster"), &RfRancher::getMonster);
+    ClassDB::bind_method(D_METHOD("hashSSID"), &RfRancher::hashSsid);
 }
