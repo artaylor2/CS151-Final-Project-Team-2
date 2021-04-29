@@ -12,10 +12,11 @@ Node * RfRancher::getMonster(String curSSID)
 int RfRancher::hashSsid(String ssid)
 {
     int total = 1;
-    for(int i = 0; i < ssid.size(); i++)
+    for(int i = 0; i < ssid.size() - 1; i++)
     {
         total *= ssid[i]; // multiply by each ascii value
         total = total % 9999999 + 1000000; // limit number growth to prevent overflow and zero values
+        print_line(vformat("Current Hash: %d", total));
     }
 
     total = abs(total);
