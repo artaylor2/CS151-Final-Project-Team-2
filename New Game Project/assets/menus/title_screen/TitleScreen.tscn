@@ -38,13 +38,11 @@ alignment = 1
 margin_top = 185.0
 margin_right = 576.0
 margin_bottom = 245.0
-scene_to_load = "res://src/Menus/MainGameMenu.tscn"
 
 [node name="ContinueButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
 margin_top = 265.0
 margin_right = 576.0
 margin_bottom = 325.0
-scene_to_load = "res://src/Menus/MainGameMenu.tscn"
 
 [node name="VersionLabel" type="Label" parent="Menu"]
 margin_top = 514.0
