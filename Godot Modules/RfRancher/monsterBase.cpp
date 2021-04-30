@@ -1,61 +1,6 @@
 #include "monsterBase.h"
 
-MonsterBase::MonsterBase()
-{   
-    int ssidHash = 1; // Set default hash for default constructor
-
-    this->isDead = false; // The monster is currently living
-
-    this->maxHappiness = 15; // Assign maxHappiness
-    this->happiness = this->maxHappiness; // Full by default
-
-    this->LastHappyTick = time(nullptr); // Set last time interacted with
-
-    this->maxHp = (ssidHash % 30) + 20; // Assign maxHp
-    this->hp = this->maxHp; // Full health by default
-
-    this->maxHunger = (ssidHash % 15) + 5; // Assign maxHunger
-    this->hunger = this->maxHunger; // Full hunger by default
-
-    this->lastHungerTick = time(nullptr); // Set last fed to current time
-
-    // Create rgb values by coverting int to Hex
-    // std::stringstream strS("");
-    // strS << std::hex << ssidHash;
-    String hexColor = vformat("%x", ssidHash);
-    if(hexColor.size() == 5) // Smallest possible value has 5 digits
-    {
-        hexColor += "0"; // Append a zero to make it 6 chars
-    }
-
-    String tempR = "", tempG = "", tempB = ""; // Hold parts of hex color
-
-    // Feed in the red values from hex color
-    tempR = hexColor.substr(0,2);
-
-    // Green values from hex color
-    tempG = hexColor.substr(2,2);
-
-    // Blue values from hex color
-    tempB = hexColor.substr(4,2);
-
-    // Convert to decimal and fill red
-    color[0] = tempR.hex_to_int();
-
-    // Convert to decimal and fill Green
-    color[1] = tempG.hex_to_int();
-
-    // Convert to decimal and fill Blue
-    color[2] = tempB.hex_to_int();
-
-    // Set blank name
-    this->name = "";
-
-    // set temporary type for child classes
-    this->type = -1;
-}
-
-MonsterBase::MonsterBase(int ssidHash)
+void MonsterBase::init(int ssidHash)
 {
     this->isDead = false; // The monster is currently living
 
@@ -73,13 +18,14 @@ MonsterBase::MonsterBase(int ssidHash)
     this->lastHungerTick = time(nullptr); // Set last fed to current time
     
     // Create rgb values by coverting int to Hex
-    // std::stringstream strS("");
-    // strS << std::hex << ssidHash;
     String hexColor = vformat("%x", ssidHash);
-    if(hexColor.size() == 5) // Smallest possible value has 5 digits
+
+    while(hexColor.size() < 7)
     {
-        hexColor += "0"; // Append a zero to make it 6 chars
+        hexColor += '0';
     }
+
+    print_line(vformat("Color Hex: %s", hexColor));
 
     String tempR = "", tempG = "", tempB = ""; // Hold parts of hex color
 
@@ -106,6 +52,8 @@ MonsterBase::MonsterBase(int ssidHash)
 
     // set temporary type for child classes
     this->type = -1;
+
+    return;
 }
 
 void MonsterBase::setName(String newName)
@@ -208,15 +156,21 @@ String MonsterBase::getTime()
 {
     return vformat("%d", lastHungerTick);
 }
+int MonsterBase::getType()
+{
+    return type;
+}
 
 void MonsterBase::_bind_methods()
 {
+    //ClassDB::bind_method(D_METHOD("init"), &MonsterBase::init);
     ClassDB::bind_method(D_METHOD("setName"), &MonsterBase::setName);    
-    ClassDB::bind_method(D_METHOD("eat"), &MonsterBase::eat);    
+    //ClassDB::bind_method(D_METHOD("eat"), &MonsterBase::eat);    
     ClassDB::bind_method(D_METHOD("play"), &MonsterBase::play);    
     ClassDB::bind_method(D_METHOD("doTick"), &MonsterBase::doTick);
     ClassDB::bind_method(D_METHOD("getName"), &MonsterBase::getName);
     ClassDB::bind_method(D_METHOD("getHappy"), &MonsterBase::getHappy);
     ClassDB::bind_method(D_METHOD("getHunger"), &MonsterBase::getHunger);
     ClassDB::bind_method(D_METHOD("getTime"), &MonsterBase::getTime);
+    ClassDB::bind_method(D_METHOD("getType"), &MonsterBase::getType);
 }

@@ -1,3 +1,9 @@
+/**
+ * @file ghostType.h
+ * @author Jacob Porath
+ * @brief Header file for GhostType class
+ * @date 2021-04-29
+ */
 #ifndef GHOSTTYPE_H
 #define GHOSTTYPE_H
 

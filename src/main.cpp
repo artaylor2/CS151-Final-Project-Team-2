@@ -1,3 +1,9 @@
+/**
+ * @file main.cpp
+ * @author Jacob Porath
+ * @brief Program for creating and testing the monster classes.
+ * @date 2021-04-29
+ */
 #include <iostream>
 #include <fstream>
 #include <cstdlib>

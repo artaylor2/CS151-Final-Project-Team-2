@@ -1,3 +1,9 @@
+/**
+ * @file rfRancher.h
+ * @author Jacob Porath
+ * @brief Header file for rfRancher functions
+ * @date 2021-04-29
+ */
 #ifndef RFRANCHER_H
 #define RFRANCHER_H
 

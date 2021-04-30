@@ -1,5 +1,16 @@
+/**
+ * @file rockType.cpp
+ * @author Jacob Porath
+ * @brief Definition file for RockType class
+ * @date 2021-04-29
+ */
 #include "rockType.h"
 
+/**
+ * @brief Construct a new Rock Type:: Rock Type object
+ * 
+ * @param ssidHash hashed ssid value for determining stats
+ */
 RockType::RockType(int ssidHash) : MonsterBase(ssidHash)
 {
     // Set type

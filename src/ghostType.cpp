@@ -1,5 +1,16 @@
+/**
+ * @file ghostType.cpp
+ * @author Jacob Porath
+ * @brief Definition file for GhostType class
+ * @date 2021-04-29
+ */
 #include "ghostType.h"
 
+/**
+ * @brief Construct a new Ghost Type:: Ghost Type object
+ * 
+ * @param ssidHash hashed ssid value for determining stats
+ */
 GhostType::GhostType(int ssidHash) : MonsterBase(ssidHash)
 {
     // Set type
@@ -9,6 +20,10 @@ GhostType::GhostType(int ssidHash) : MonsterBase(ssidHash)
     setName();
 }
 
+/**
+ * @brief Override MonsterBase function to adjust happiness rate of change
+ * 
+ */
 void GhostType::doTick() // Remove 1 point of hunger and .5 happiness per hour
 {
     if(this->isDead) // Check if monster is still alive
