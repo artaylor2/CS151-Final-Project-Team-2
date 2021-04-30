@@ -103,7 +103,6 @@ __meta__ = {
 }
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
-layer = 0
 
 [node name="background" type="TextureRect" parent="BackgroundLayer"]
 anchor_right = 1.0
@@ -189,7 +188,7 @@ custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
-text = "Label"
+text = "Capture"
 __meta__ = {
 "_edit_use_anchors_": false
 }
