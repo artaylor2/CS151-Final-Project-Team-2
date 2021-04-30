@@ -1,5 +1,16 @@
+/**
+ * @file forestType.cpp
+ * @author Jacob Porath
+ * @brief Definition file for ForestType class
+ * @date 2021-04-29
+ */
 #include "forestType.h"
 
+/**
+ * @brief Construct a new Forest Type:: Forest Type object
+ * 
+ * @param ssidHash hashed ssid value for determining stats
+ */
 ForestType::ForestType(int ssidHash) : MonsterBase(ssidHash)
 {
     // Set type
@@ -9,6 +20,10 @@ ForestType::ForestType(int ssidHash) : MonsterBase(ssidHash)
     setName();
 }
 
+/**
+ * @brief override MonsterBase function to adjust hunger rates of this monster
+ * 
+ */
 void ForestType::doTick()
 {
     if(this->isDead) // Check if monster is still alive

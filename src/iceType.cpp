@@ -1,10 +1,25 @@
+/**
+ * @file iceType.cpp
+ * @author Jacob Porath
+ * @brief Definition file for IceType class
+ * @date 2021-04-29
+ */
 #include "iceType.h"
 
+/**
+ * @brief Construct a new Ice Type:: Ice Type object
+ * 
+ * @param ssidHash hashed ssid value for determining stats
+ */
 IceType::IceType(int ssidHash) : MonsterBase(ssidHash)
 {
     this->type = Ice;
 }
 
+/**
+ * @brief Override MonsterBase function for implementing a relationship between hunger rate and happiness
+ * 
+ */
 void IceType::doTick() // Remove hunger based on happiness level
 {
     if(this->isDead) // Check if monster is still alive

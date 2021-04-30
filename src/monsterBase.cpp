@@ -1,5 +1,16 @@
+/**
+ * @file monsterBase.cpp
+ * @author Jacob Porath
+ * @brief Definition file for MonsterBase class
+ * @date 2021-04-29
+ */
 #include "monsterBase.h"
 
+/**
+ * @brief Construct a new Monster Base:: Monster Base object using hashed ssid for random stat generation
+ * 
+ * @param ssidHash hashed ssid value for generating monster stats
+ */
 MonsterBase::MonsterBase(int ssidHash)
 {
     this->isDead = false; // The monster is currently living
@@ -64,6 +75,11 @@ MonsterBase::MonsterBase(int ssidHash)
     this->type = Undefined;
 }
 
+/**
+ * @brief returns a string containing all monster object data
+ * 
+ * @return std::string all monster object data
+ */
 std::string MonsterBase::toStr() const
 {
     std::stringstream strS("");
@@ -75,6 +91,10 @@ std::string MonsterBase::toStr() const
     return strS.str();
 }
 
+/**
+ * @brief prompts the user to name the monster
+ * 
+ */
 void MonsterBase::setName()
 {
     if(this->isDead) // Check if monster is still alive
@@ -87,6 +107,11 @@ void MonsterBase::setName()
     getline(std::cin, name);
 }
 
+/**
+ * @brief The monster consumes a food object to regain hunger
+ * 
+ * @param f food object being consumed
+ */
 void MonsterBase::eat(Food &f)
 {
     if(this->isDead) // Check if monster is still alive
@@ -110,6 +135,10 @@ void MonsterBase::eat(Food &f)
     }
 }
 
+/**
+ * @brief Play with the monster to increase its happiness
+ * 
+ */
 void MonsterBase::play()
 {
     if(this->isDead) // Check if monster is still alive
@@ -126,6 +155,10 @@ void MonsterBase::play()
     // this->LastHappyTick = time(nullptr);
 }
 
+/**
+ * @brief update happiness, hunger, and hp by time
+ * 
+ */
 void MonsterBase::doTick() // Remove 1 point of hunger and happiness per hour
 {
     if(this->isDead) // Check if monster is still alive

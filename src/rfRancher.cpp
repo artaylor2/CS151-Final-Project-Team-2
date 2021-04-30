@@ -1,5 +1,16 @@
+/**
+ * @file rfRancher.cpp
+ * @author Jacob Porath
+ * @brief Definition file for rfRancher functions
+ * @date 2021-04-29
+ */
 #include "rfRancher.h"
 
+/**
+ * @brief Uses wifiSniffer functions to find the strongest signal strength wifi network and return its ssid
+ * 
+ * @return std::string SSID of the strongest signal strength network
+ */
 std::string ssidScan()
 {
 	std::string wifiID = "";
@@ -8,7 +19,7 @@ std::string ssidScan()
 	{
     	wifiID = getDeviceID();
 	}
-	catch(std::logic_error err)
+	catch(std::logic_error err) // Throws error if can't find system files (wsl causes problems here)
 	{
 
 	}
@@ -40,6 +51,12 @@ std::string ssidScan()
     return ssid;
 }
 
+/**
+ * @brief hashes the string into a large random number 
+ * 
+ * @param ssid string to be hashed (network ssid)
+ * @return int hash result
+ */
 int hashSsid(std::string ssid)
 {
     int total = 1;
@@ -52,6 +69,12 @@ int hashSsid(std::string ssid)
     return total;
 }
 
+/**
+ * @brief determines what monster type the hash value should correspond to
+ * 
+ * @param ssidHash hashed ssid value
+ * @return int monster type corresponding to enum in rfRancher.h
+ */
 int determineType(int ssidHash)
 {
     return ssidHash % 6;
