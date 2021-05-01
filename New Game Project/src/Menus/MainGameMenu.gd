@@ -19,16 +19,19 @@ func _ready():
 # Create a function call that sets monster caught to true, passing it to the monster list 
 # script so that we can display the found monster
 func spawn_button(my_random_number):
-	test = Actor.new()
-	test.happiness = 100
-	test.hunger = 50
+	test = MonsterBase.new()
+	test.setName("Test")
+	var name = test.getName()
+	print(test.doTick())
+	MonsterData.set_monster(test)
+	
 	get_tree().change_scene(MonsterData.levels[my_random_number])
 
 func _on_Button_pressed(scene_to_load):
 	get_tree().change_scene(scene_to_load)
 
 # Called every frame while in scene. Use this to constantly update the health and happiness of monsters
-func _process(delta):
+#func _process(delta):
 	#Get server tick
-	
-	pass
+
+
