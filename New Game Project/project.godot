@@ -21,12 +21,11 @@ _global_script_class_icons={
 [application]
 
 config/name="New Game Project"
-run/main_scene="res://assets/menus/title_screen/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-MonsterData="*res://src/AutoLoad/PlayerData.gd"
+MonsterData="*res://src/AutoLoad/MonsterData.gd"
 
 [display]
 

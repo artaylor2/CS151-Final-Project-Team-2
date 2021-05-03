@@ -54,7 +54,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scene_to_load = "res://src/Menus/BarkatMenu.tscn"
+scene_to_load = "res://src/Menus/MonsterTestCodex.tscn"
 
 [node name="Monster1" type="Label" parent="MonsterList/Row1/Barkat"]
 anchor_right = 1.0
@@ -217,7 +217,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scene_to_load = "res://src/Menus/Grimoir.tscn"
+scene_to_load = "res://src/Menus/Node.tscn"
 
 [node name="Label" type="Label" parent="MonsterList/Row6/Grimoire"]
 anchor_right = 1.0
