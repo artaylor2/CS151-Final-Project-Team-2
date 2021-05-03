@@ -3,12 +3,10 @@
 
 #include <iostream> // Testing
 #include <string>
-#include <iomanip>
 #include <ctime>
 
 #include "scene/main/node.h"
-#include "core/string/ustring.h"   // Godot string library
-#include "core/object/reference.h" // Godot reference wrapper
+#include "core/ustring.h"   // Godot string library
 
 class MonsterBase : public Node
 {
@@ -23,7 +21,7 @@ public:
         }
         else if(p_what == NOTIFICATION_PROCESS)   
         {
-            doTick();
+            this->doTick();
         }
     }
 
@@ -36,9 +34,9 @@ public:
 
     // Temp testing methods
     String getName();
-    String getHappy();
-    String getHunger();
-    String getTime();  
+    float getHappy();
+    float getHunger();
+    bool getDead();
     int getType();  
 
 protected:
@@ -46,12 +44,12 @@ protected:
     
     String name;
     
-    double happiness; // 0-maxHappiness
+    float happiness; // 0-maxHappiness
     int maxHappiness; // 15
     int LastHappyTick; // last time happiness was updated
-    double hp; // 0-maxHp
+    float hp; // 0-maxHp
     int maxHp; // 20-50
-    double hunger; // 0-maxHunger
+    float hunger; // 0-maxHunger
     int maxHunger; // 5-20
     int lastHungerTick; // last time hunger was updated
     bool isDead; // current living status
