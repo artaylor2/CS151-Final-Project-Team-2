@@ -3,8 +3,12 @@
 void FireType::init(int ssidHash)
 {
     MonsterBase::init(ssidHash);
-    this->type = 1;
-    print_line(vformat("Fire Type Set: %d", type));
+
+    // Set type and default name
+    this->type = Fire;
+    this->name = "Igneous";
+
+    ClassDB::bind_method(D_METHOD("eat"), &FireType::eat);
 
     return;
 }
@@ -33,8 +37,16 @@ bool FireType::eat(int food)
     return true;
 }
 
-void FireType::_bind_methods()
+void FireType::doTick()
+{
+    MonsterBase::doTick();
+
+    return;
+}
+
+void FireType::_bind_methods() // Godot method bindings
 {
     ClassDB::bind_method(D_METHOD("init"), &FireType::init);
+    ClassDB::bind_method(D_METHOD("doTick"), &FireType::doTick);
     ClassDB::bind_method(D_METHOD("eat"), &FireType::eat);
 }
