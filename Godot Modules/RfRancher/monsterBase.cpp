@@ -141,36 +141,37 @@ void MonsterBase::doTick() // Remove 1 point of hunger and happiness per hour
 
 String MonsterBase::getName()
 {
-    return name;
+    return this->name;
 }
 
-String MonsterBase::getHappy()
+float MonsterBase::getHappy()
 {
-    return vformat("%d / %d", happiness, maxHappiness);
+    return this->happiness;
 }
-String MonsterBase::getHunger()
+
+float MonsterBase::getHunger()
 {
-    return vformat("%d / %d", hunger, maxHunger);
+    return this->hunger;
 }
-String MonsterBase::getTime()
+
+bool MonsterBase::getDead()
 {
-    return vformat("%d", lastHungerTick);
+    return this->isDead;
 }
 int MonsterBase::getType()
 {
-    return type;
+    return this->type;
 }
 
-void MonsterBase::_bind_methods()
+void MonsterBase::_bind_methods() // Godot method bindings
 {
-    //ClassDB::bind_method(D_METHOD("init"), &MonsterBase::init);
-    ClassDB::bind_method(D_METHOD("setName"), &MonsterBase::setName);    
-    //ClassDB::bind_method(D_METHOD("eat"), &MonsterBase::eat);    
-    ClassDB::bind_method(D_METHOD("play"), &MonsterBase::play);    
-    ClassDB::bind_method(D_METHOD("doTick"), &MonsterBase::doTick);
+    ClassDB::bind_method(D_METHOD("play"), &MonsterBase::play);
+    
+    ClassDB::bind_method(D_METHOD("setName"), &MonsterBase::setName);
+    
     ClassDB::bind_method(D_METHOD("getName"), &MonsterBase::getName);
     ClassDB::bind_method(D_METHOD("getHappy"), &MonsterBase::getHappy);
     ClassDB::bind_method(D_METHOD("getHunger"), &MonsterBase::getHunger);
-    ClassDB::bind_method(D_METHOD("getTime"), &MonsterBase::getTime);
+    ClassDB::bind_method(D_METHOD("getDead"), &MonsterBase::getDead);
     ClassDB::bind_method(D_METHOD("getType"), &MonsterBase::getType);
 }

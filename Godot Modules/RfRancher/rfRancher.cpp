@@ -2,11 +2,47 @@
 
 Node * RfRancher::getMonster(String curSSID)
 {  
+    // Get new hash and type selection integer
     int newHash = hashSsid(curSSID);
-    MonsterBase * m = new MonsterBase;
-    m->init(newHash);
+    int selection = newHash % 6;
 
-    return m;
+    // Create monster pointer
+    if(selection == 0)
+    {
+        GhostType* m = new GhostType;
+        m->init(newHash);
+        return m;
+    }
+    else if(selection == 1)
+    {
+        FireType* m = new FireType;
+        m->init(newHash);
+        return m;
+    }
+    else if(selection == 2)
+    {
+        WaterType* m = new WaterType;
+        m->init(newHash);
+        return m;
+    }
+    else if(selection == 3)
+    {
+        ForestType* m = new ForestType;
+        m->init(newHash);
+        return m;
+    }
+    else if(selection == 4)
+    {
+        RockType* m = new RockType;
+        m->init(newHash);
+        return m;
+    }
+    else
+    {
+        IceType* m = new IceType;
+        m->init(newHash);
+        return m;
+    }    
 }
 
 int RfRancher::hashSsid(String ssid)
@@ -16,18 +52,12 @@ int RfRancher::hashSsid(String ssid)
     {
         total *= ssid[i]; // multiply by each ascii value
         total = total % 9999999 + 1000000; // limit number growth to prevent overflow and zero values
-        print_line(vformat("Current Hash: %d", total));
     }
 
     total = abs(total);
 
     return total;
 }
-
-int RfRancher::determineType(int ssidHash)
-{
-    return ssidHash % 6;
-} // Returns enum defined in rfRancher.h
 
 void RfRancher::_bind_methods()
 {

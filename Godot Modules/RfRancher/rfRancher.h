@@ -7,9 +7,15 @@
 #include <string>
 
 #include "monsterBase.h"
-#include "scene/main/node.h"
-#include "core/string/ustring.h"
-#include "core/object/reference.h" // Godot reference wrapper
+#include "fireType.h"
+#include "forestType.h"
+#include "ghostType.h"
+#include "iceType.h"
+#include "forestType.h"
+#include "rockType.h"
+#include "waterType.h"
+#include "core/ustring.h"
+#include "core/reference.h" // Godot reference wrapper
 
 class RfRancher : public Reference
 {
