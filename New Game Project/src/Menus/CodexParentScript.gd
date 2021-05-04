@@ -1,5 +1,6 @@
 extends Node
 
+# File strings to help create a new scene
 var file_res = "res://src/Menus/"
 var file_end = ".tscn"
 
@@ -10,10 +11,14 @@ func save_scene() -> void:
 	var i_hope_this_works = MonsterData.monster_array[MonsterData.monster_array.size() - 1]
 	var monster_name = i_hope_this_works.getName()
 	var monster_type = i_hope_this_works.getType()
+	
 	# Populate the type and name fields on the codex
-	monster_name_label.text = monster_name
+	monster_name_label.text = "Name: %s" % monster_name
+	monster_type_label.text = "Type: %s" % monster_type
 	# Create new file name for the monster codex and store it in global array
 	var file = file_res + monster_name + file_end
+	
+	# Push file name into codex array
 	MonsterData.set_codex(file)
 	MonsterData.num_monsters += 1
 	

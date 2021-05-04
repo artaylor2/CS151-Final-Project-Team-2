@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://src/Menus/CodexMenuControl.gd" type="Script" id=11]
+[ext_resource path="res://src/Menus/CodexParentScript.gd" type="Script" id=11]
 
 [node name="CodexParent" type="Control"]
 script = ExtResource( 11 )

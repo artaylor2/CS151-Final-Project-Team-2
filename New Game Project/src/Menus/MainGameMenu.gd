@@ -1,7 +1,5 @@
 extends Control
 
-var test
-var environmentInt
 # Test variable to ensure that we can re direct into the right scene based upon sniffer
 var rng = RandomNumberGenerator.new()
 
@@ -24,21 +22,17 @@ func spawn_button(my_random_number):
 	var m = r.getMonster("HiveMind")
 	var name = m.getName()
 	var type = m.getType()
-	print(m.getHunger())
 	
+	# Push the monster object into an array
 	MonsterData.set_monster(m)
 	
-	var instanceattempt1 = codex.instance()
-	instanceattempt1.save_scene()
+	var instance_codex = codex.instance()
+	instance_codex.save_scene()
 	
 	# Swap scenes to appropriate level
 	get_tree().change_scene(MonsterData.levels[my_random_number])
 
 func _on_Button_pressed(scene_to_load):
 	get_tree().change_scene(scene_to_load)
-
-# Called every frame while in scene. Use this to constantly update the health and happiness of monsters
-#func _process(delta):
-	#Get server tick
 
 

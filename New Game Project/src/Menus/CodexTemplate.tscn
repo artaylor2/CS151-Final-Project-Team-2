@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/interface/bar/energy_bar/fill.png" type="Texture" id=8]
 [ext_resource path="res://assets/interface/bar/life_bar/bg.png" type="Texture" id=9]
 [ext_resource path="res://assets/interface/bar/energy_bar/ep_label.tres" type="DynamicFont" id=10]
-[ext_resource path="res://src/Menus/CodexMenuControl.gd" type="Script" id=11]
+[ext_resource path="res://src/Menus/CodexParentScript.gd" type="Script" id=11]
 [ext_resource path="res://assets/menus/title_screen/buttons/MenuButton.gd" type="Script" id=12]
 [ext_resource path="res://assets/font_default.tres" type="DynamicFont" id=13]
 
@@ -65,7 +65,7 @@ margin_bottom = 14.0
 [node name="MonsterType" type="Label" parent="SkillBox"]
 margin_top = 18.0
 margin_right = 576.0
-margin_bottom = 49.0
+margin_bottom = 58.0
 custom_fonts/font = ExtResource( 13 )
 
 [node name="StatusBox" type="VBoxContainer" parent="."]

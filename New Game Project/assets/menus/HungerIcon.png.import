@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/portal.png-aead05909ff805293aa08d3705b32f3c.stex"
+path="res://.import/HungerIcon.png-ae7cd0302ce514a8b452c6760d0ea68a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portal.png"
-dest_files=[ "res://.import/portal.png-aead05909ff805293aa08d3705b32f3c.stex" ]
+source_file="res://assets/menus/HungerIcon.png"
+dest_files=[ "res://.import/HungerIcon.png-ae7cd0302ce514a8b452c6760d0ea68a.stex" ]
 
 [params]
 

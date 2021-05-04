@@ -1,18 +1,20 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://assets/interface/bar/energy_bar/bg.png" type="Texture" id=1]
-[ext_resource path="res://assets/interface/bar/life_bar/label_HP.png" type="Texture" id=2]
-[ext_resource path="res://assets/interface/bar/energy_bar/label_EP.png" type="Texture" id=3]
+[ext_resource path="res://assets/menus/HappyFace.png" type="Texture" id=2]
+[ext_resource path="res://assets/menus/HungerIcon.png" type="Texture" id=3]
 [ext_resource path="res://assets/interface/bar/life_bar/bg.png" type="Texture" id=4]
-[ext_resource path="res://assets/interface/bar/energy_bar/fill.png" type="Texture" id=5]
 [ext_resource path="res://assets/menus/CloseButton.png" type="Texture" id=6]
 [ext_resource path="res://assets/interface/bar/life_bar/fill.png" type="Texture" id=7]
 [ext_resource path="res://assets/interface/counter/label_bg.png" type="Texture" id=8]
-[ext_resource path="res://assets/interface/bar/energy_bar/ep_label.tres" type="DynamicFont" id=9]
-[ext_resource path="res://src/Menus/CodexMenuControl.gd" type="Script" id=10]
+[ext_resource path="res://assets/menus/Arrow_Reverse.png" type="Texture" id=9]
+[ext_resource path="res://src/Menus/CodexParentScript.gd" type="Script" id=10]
 [ext_resource path="res://src/Menus/CodexInfo.gd" type="Script" id=11]
 [ext_resource path="res://assets/menus/title_screen/buttons/MenuButton.gd" type="Script" id=12]
 [ext_resource path="res://assets/interface/theme/default_theme.tres" type="Theme" id=13]
+[ext_resource path="res://assets/font_default.tres" type="DynamicFont" id=14]
+[ext_resource path="res://assets/player.png" type="Texture" id=15]
+[ext_resource path="res://assets/menus/Arrow.png" type="Texture" id=16]
+[ext_resource path="res://assets/backgrounds/Codex_Background_Lower.png" type="Texture" id=17]
 
 [node name="Node" type="Node"]
 script = ExtResource( 10 )
@@ -26,10 +28,14 @@ __meta__ = {
 }
 
 [node name="CloseContainer" type="CenterContainer" parent="CodexTemplate"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -92.0
-margin_bottom = 86.0
+anchor_left = 0.799
+anchor_top = 0.023
+anchor_right = 0.958
+anchor_bottom = 0.107
+margin_left = -0.223999
+margin_top = 0.447998
+margin_right = 0.191956
+margin_bottom = 0.431992
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -45,37 +51,61 @@ script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scene_to_load = "res://src/Menus/MonsterList.tscn"
+scene_to_load = "res://src/Menus/MainGameMenu.tscn"
 
 [node name="SkillBox" type="VBoxContainer" parent="CodexTemplate"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -288.0
-margin_top = -400.0
-margin_right = 288.0
-rect_min_size = Vector2( 0, 400 )
+anchor_left = 0.061
+anchor_top = 0.664
+anchor_right = 0.941
+anchor_bottom = 0.863
+margin_left = -0.136002
+margin_top = 0.0639648
+margin_right = -0.0160522
+margin_bottom = 0.287964
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MonsterName" type="Label" parent="CodexTemplate/SkillBox"]
-margin_right = 576.0
-margin_bottom = 14.0
+anchor_top = 0.0392157
+anchor_bottom = 0.0392157
+margin_right = 507.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = ExtResource( 14 )
+text = "Name: %s"
+valign = 1
 
 [node name="MonsterType" type="Label" parent="CodexTemplate/SkillBox"]
-margin_top = 18.0
-margin_right = 576.0
-margin_bottom = 32.0
+anchor_top = 0.0784314
+anchor_bottom = 0.0784314
+margin_top = 54.0
+margin_right = 507.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = ExtResource( 14 )
+text = "Type: %s"
+
+[node name="Spawn" type="Label" parent="CodexTemplate/SkillBox"]
+anchor_top = 0.117647
+anchor_bottom = 0.117647
+margin_top = 108.0
+margin_right = 507.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = ExtResource( 14 )
+text = "Spawn: %s"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="StatusBox" type="VBoxContainer" parent="CodexTemplate"]
-anchor_top = 0.392
+anchor_top = 0.448
 anchor_right = 1.0
-anchor_bottom = 0.601
-margin_top = -2.87994
-margin_bottom = -0.895935
+anchor_bottom = 0.648
+margin_top = 2.24799
+margin_bottom = 0.447998
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -83,38 +113,42 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="CodexTemplate/StatusBox"]
 
 [node name="Hunger" type="HBoxContainer" parent="CodexTemplate/StatusBox/CanvasLayer"]
-anchor_left = 0.142
-anchor_top = 0.525
-anchor_right = 0.858
-anchor_bottom = 0.564
-margin_left = 0.208
-margin_top = 0.399963
-margin_right = -0.208008
-margin_bottom = 0.463989
+anchor_left = 0.021
+anchor_top = 0.572
+anchor_right = 0.993
+anchor_bottom = 0.624
+margin_left = -0.0960007
+margin_top = 0.271912
+margin_right = 0.0319824
+margin_bottom = 0.0239258
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="Counter" type="NinePatchRect" parent="CodexTemplate/StatusBox/CanvasLayer/Hunger"]
-margin_right = 130.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 130, 0 )
+margin_right = 160.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 160, 0 )
 texture = ExtResource( 8 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
-[node name="Icon" type="TextureRect" parent="CodexTemplate/StatusBox/CanvasLayer/Hunger/Counter"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 11.7526
-margin_top = -13.0
-margin_right = 33.7526
-margin_bottom = 11.0
+[node name="HungerIcon" type="TextureRect" parent="CodexTemplate/StatusBox/CanvasLayer/Hunger/Counter"]
+anchor_left = 0.055
+anchor_top = 0.123
+anchor_right = 0.305
+anchor_bottom = 0.877
+margin_left = -1.0474
+margin_top = -0.019002
+margin_right = -1.04741
+margin_bottom = 0.0189972
 texture = ExtResource( 3 )
 stretch_mode = 4
 __meta__ = {
@@ -122,16 +156,13 @@ __meta__ = {
 }
 
 [node name="HungerLabel" type="Label" parent="CodexTemplate/StatusBox/CanvasLayer/Hunger/Counter"]
-anchor_left = 0.938
-anchor_top = 0.5
-anchor_right = 0.938
-anchor_bottom = 0.5
-margin_left = -92.94
-margin_top = -23.0
-margin_right = 0.0599976
-margin_bottom = 25.0
+anchor_left = 0.319
+anchor_right = 0.962
+anchor_bottom = 1.019
+margin_left = -3.04
+margin_right = 0.0799866
+margin_bottom = 0.992996
 theme = ExtResource( 13 )
-custom_fonts/font = ExtResource( 9 )
 text = "%s/100"
 align = 2
 valign = 1
@@ -142,12 +173,17 @@ __meta__ = {
 }
 
 [node name="HungerBar" type="TextureProgress" parent="CodexTemplate/StatusBox/CanvasLayer/Hunger"]
-margin_left = 134.0
-margin_right = 382.0
-margin_bottom = 40.0
-value = 24.0
-texture_under = ExtResource( 1 )
-texture_progress = ExtResource( 5 )
+anchor_left = -0.0160714
+anchor_right = -0.0160714
+margin_left = 164.0
+margin_right = 560.0
+margin_bottom = 53.0
+value = 100.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 7 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Happiness" type="HBoxContainer" parent="CodexTemplate/StatusBox/CanvasLayer"]
 anchor_left = 0.016
@@ -155,14 +191,16 @@ anchor_top = 0.467
 anchor_right = 0.984
 anchor_bottom = 0.519
 margin_left = -0.216001
-margin_top = -0.208008
+margin_top = 4.79199
 margin_right = 2.216
-margin_bottom = -0.456055
+margin_bottom = 4.54401
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Counter" type="NinePatchRect" parent="CodexTemplate/StatusBox/CanvasLayer/Happiness"]
+anchor_left = 0.00535714
+anchor_right = 0.00535714
 margin_right = 160.0
 margin_bottom = 53.0
 rect_min_size = Vector2( 160, 0 )
@@ -175,27 +213,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Icon" type="TextureRect" parent="CodexTemplate/StatusBox/CanvasLayer/Happiness/Counter"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 10.5
-margin_top = -12.0
-margin_right = 45.5
-margin_bottom = 12.0
+[node name="HappyIcon" type="TextureRect" parent="CodexTemplate/StatusBox/CanvasLayer/Happiness/Counter"]
+anchor_left = 0.05
+anchor_top = 0.113
+anchor_right = 0.294
+anchor_bottom = 0.868
+margin_left = -1.0
+margin_top = 0.0109997
+margin_right = -0.0400009
+margin_bottom = -0.00400162
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HappinessLabel" type="Label" parent="CodexTemplate/StatusBox/CanvasLayer/Happiness/Counter"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -109.0
-margin_top = -26.5
-margin_right = -3.0
-margin_bottom = 28.5
+anchor_left = 0.306
+anchor_right = 0.969
+anchor_bottom = 1.038
+margin_left = 0.0399971
+margin_right = -0.0400085
+margin_bottom = -0.0140076
 theme = ExtResource( 13 )
 text = "%s/100"
 align = 2
@@ -207,39 +245,149 @@ __meta__ = {
 }
 
 [node name="HappinessBar" type="TextureProgress" parent="CodexTemplate/StatusBox/CanvasLayer/Happiness"]
+anchor_left = -0.0107143
+anchor_right = -0.0107143
 margin_left = 164.0
 margin_right = 560.0
 margin_bottom = 53.0
-value = 24.0
+value = 100.0
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 7 )
 
 [node name="Menu" type="CanvasLayer" parent="CodexTemplate"]
+layer = -2
 
 [node name="MenuBackground" type="TextureRect" parent="CodexTemplate/Menu"]
-visible = false
+anchor_top = 0.438477
 anchor_right = 1.0
 anchor_bottom = 1.0
+texture = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="MonsterSprite" type="TextureRect" parent="CodexTemplate"]
-anchor_left = 0.262789
-anchor_top = 0.1577
-anchor_right = 0.733275
-anchor_bottom = 0.363755
-margin_left = -20.0
-margin_top = -18.7657
-margin_right = 20.0
-margin_bottom = 21.2343
+[node name="TextureRect" type="TextureRect" parent="CodexTemplate/Menu"]
+anchor_right = 0.998
+anchor_bottom = 0.438
+margin_right = 246.152
+margin_bottom = 241.488
+rect_scale = Vector2( 0.7, 0.65 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TypeSprite" type="TextureRect" parent="CodexTemplate"]
-margin_right = 136.0
-margin_bottom = 129.0
+[node name="TypePicture" type="TextureRect" parent="CodexTemplate"]
+anchor_left = 0.042
+anchor_top = 0.023
+anchor_right = 0.201
+anchor_bottom = 0.107
+margin_left = -0.192001
+margin_top = 0.447998
+margin_right = 0.223999
+margin_bottom = 0.431992
+rect_min_size = Vector2( 92, 86 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Backwards_Container" type="CenterContainer" parent="CodexTemplate"]
+visible = false
+anchor_left = 0.056
+anchor_top = 0.885
+anchor_right = 0.396
+anchor_bottom = 0.975
+margin_left = -0.256001
+margin_top = -0.240051
+margin_right = -0.095993
+margin_bottom = -0.400024
+rect_min_size = Vector2( 184, 86 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="GoBack" type="Button" parent="CodexTemplate/Backwards_Container"]
+margin_right = 196.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 184, 86 )
+icon = ExtResource( 16 )
+flat = true
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Forwards_Container" type="CenterContainer" parent="CodexTemplate"]
+visible = false
+anchor_left = 0.625
+anchor_top = 0.885
+anchor_right = 0.965
+anchor_bottom = 0.975
+margin_top = -0.240051
+margin_right = 0.160034
+margin_bottom = -0.400024
+rect_min_size = Vector2( 184, 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoNext" type="Button" parent="CodexTemplate/Forwards_Container"]
+margin_right = 196.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 184, 86 )
+icon = ExtResource( 9 )
+flat = true
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MonsterSprite" type="Sprite" parent="CodexTemplate"]
+modulate = Color( 0.820312, 0.140991, 0.140991, 1 )
+position = Vector2( 232, 272 )
+scale = Vector2( 2.05112, 2.85323 )
+texture = ExtResource( 15 )
+
+[node name="FeedContainer" type="CenterContainer" parent="CodexTemplate"]
+anchor_left = 0.799
+anchor_top = 0.273
+anchor_right = 0.958
+anchor_bottom = 0.357
+margin_left = -0.223999
+margin_top = 0.447998
+margin_right = 0.191956
+margin_bottom = 0.431976
+rect_min_size = Vector2( 92, 86 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="FeedButton" type="Button" parent="CodexTemplate/FeedContainer"]
+margin_right = 92.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 92, 86 )
+text = "Play"
+
+[node name="PlayContainer" type="CenterContainer" parent="CodexTemplate"]
+anchor_left = 0.799
+anchor_top = 0.148
+anchor_right = 0.958
+anchor_bottom = 0.232
+margin_left = -0.223999
+margin_top = 0.447998
+margin_right = 0.191956
+margin_bottom = 0.431992
+rect_min_size = Vector2( 92, 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="CodexTemplate/PlayContainer"]
+margin_right = 92.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 92, 86 )
+text = "Feed"
