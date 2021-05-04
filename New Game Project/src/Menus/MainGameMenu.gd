@@ -22,6 +22,7 @@ func spawn_button(my_random_number):
 	var m = r.getMonster("HiveMind")
 	var name = m.getName()
 	var type = m.getType()
+	print(m.getHunger())
 	
 	# Push the monster object into an array
 	MonsterData.set_monster(m)

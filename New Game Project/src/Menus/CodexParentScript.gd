@@ -8,11 +8,15 @@ var file_end = ".tscn"
 func save_scene() -> void:
 	var monster_name_label: Label = get_node("CodexTemplate/SkillBox/MonsterName")
 	var monster_type_label: Label = get_node("CodexTemplate/SkillBox/MonsterType")
+	var monster_color_sprite: Sprite = get_node("CodexTemplate/MonsterSprite")
+	var monster_index: Control = get_node("CodexTemplate")
 	var i_hope_this_works = MonsterData.monster_array[MonsterData.monster_array.size() - 1]
 	var monster_name = i_hope_this_works.getName()
-	var monster_type = i_hope_this_works.getType()
+	var type_index = i_hope_this_works.getType()
+	var monster_type = MonsterData.types[type_index]
 	
 	# Populate the type and name fields on the codex
+	monster_index._index = MonsterData.num_monsters
 	monster_name_label.text = "Name: %s" % monster_name
 	monster_type_label.text = "Type: %s" % monster_type
 	# Create new file name for the monster codex and store it in global array
