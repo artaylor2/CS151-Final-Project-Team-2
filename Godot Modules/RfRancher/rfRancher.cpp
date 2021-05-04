@@ -1,7 +1,107 @@
 #include "rfRancher.h"
 
-Node * RfRancher::getMonster(String curSSID)
+Node * RfRancher::testGetMonster(String curSSID)
 {  
+    srand(time(NULL));
+
+    // If no SSID is retrieved generate a random one instead.
+    if(curSSID.empty())
+    {
+        curSSID += rand();
+    }
+
+    // Get new hash and type selection integer
+    int newHash = hashSsid(curSSID);
+    int selection = newHash % 6;
+
+    // Create monster pointer
+    if(selection == 0)
+    {
+        GhostType* m = new GhostType;
+        m->init(newHash);
+        return m;
+    }
+    else if(selection == 1)
+    {
+        FireType* m = new FireType;
+        m->init(newHash);
+        return m;
+    }
+    else if(selection == 2)
+    {
+        WaterType* m = new WaterType;
+        m->init(newHash);
+        return m;
+    }
+    else if(selection == 3)
+    {
+        ForestType* m = new ForestType;
+        m->init(newHash);
+        return m;
+    }
+    else if(selection == 4)
+    {
+        RockType* m = new RockType;
+        m->init(newHash);
+        return m;
+    }
+    else
+    {
+        IceType* m = new IceType;
+        m->init(newHash);
+        return m;
+    }    
+}
+
+Node * RfRancher::getMonster()
+{  
+    srand(time(NULL));
+    String curSSID = "";
+
+    std::string wifiID = "";
+	try
+	{
+    	wifiID = getDeviceID();
+	}
+	catch(std::logic_error err) // Throws error if can't find system files (wsl causes problems here)
+	{
+
+	}
+
+	if(!wifiID.empty())
+	{
+		if(!sniffWifi(&wifiID[0], "./scans/sniffResults"))
+		{
+			printf("Scan failed, using old data.");
+		}
+	}
+	else
+	{
+        printf("Couldn't get device ID, using old data.");
+	}
+
+	// Open sniffer results file
+	std::ifstream in("./scans/sniffResults");
+    
+	if(!in.is_open())
+	{
+		printf("Couldn't get device ID, using old data.");
+	}
+    else
+    {
+        string temp;
+        // Get strongest ssid
+	    getline(in, temp);
+        curSSID = &temp[0];
+	    in.close(); // Close the file
+    }
+
+    // If no SSID is retrieved generate a random one instead.
+    if(curSSID.empty())
+    {
+        curSSID += rand();
+    }
+
     // Get new hash and type selection integer
     int newHash = hashSsid(curSSID);
     int selection = newHash % 6;
@@ -62,5 +162,6 @@ int RfRancher::hashSsid(String ssid)
 void RfRancher::_bind_methods()
 {
     ClassDB::bind_method(D_METHOD("getMonster"), &RfRancher::getMonster);
+    ClassDB::bind_method(D_METHOD("testGetMonster"), &RfRancher::testGetMonster);
     ClassDB::bind_method(D_METHOD("hashSSID"), &RfRancher::hashSsid);
 }

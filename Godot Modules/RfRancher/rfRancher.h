@@ -4,7 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <stdlib.h>
 #include <string>
+#include <ctime>
 
 #include "monsterBase.h"
 #include "fireType.h"
@@ -14,6 +16,8 @@
 #include "forestType.h"
 #include "rockType.h"
 #include "waterType.h"
+#include "wifiSniffer.h"
+
 #include "core/ustring.h"
 #include "core/reference.h" // Godot reference wrapper
 
@@ -23,7 +27,8 @@ class RfRancher : public Reference
     enum monstTypes {Undefined = -1, Ghost, Fire, Water, Forest, Rock, Ice};
 
 public:
-    Node * getMonster(String curSSID);
+    Node * testGetMonster(String curSSID);
+    Node * getMonster();
     int hashSsid(String ssid);
 
 protected:

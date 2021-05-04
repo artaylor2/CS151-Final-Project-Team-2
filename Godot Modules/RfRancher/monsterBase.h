@@ -5,6 +5,7 @@
 #include <string>
 #include <ctime>
 
+#include "core/color.h"
 #include "scene/main/node.h"
 #include "core/ustring.h"   // Godot string library
 
@@ -32,10 +33,17 @@ public:
     bool play();
     void doTick(); // update happiness and hunger values
 
-    // Temp testing methods
+    // Info return methods
     String getName();
+    String getColor();
+    
     float getHappy();
+    float getHealth();
     float getHunger();
+    int getMaxHappy();
+    int getMaxHealth();
+    int getMaxHunger();
+    
     bool getDead();
     int getType();  
 
@@ -43,6 +51,7 @@ protected:
     enum monstTypes {Undefined = -1, Ghost, Fire, Water, Forest, Rock, Ice};    
     
     String name;
+    String hexColor;
     
     float happiness; // 0-maxHappiness
     int maxHappiness; // 15
@@ -55,7 +64,6 @@ protected:
     bool isDead; // current living status
     int color [3]; // r 0-255, g 0-255, b 0-255
     int type; // Enum from rfRancher.h
-
     static void _bind_methods(); // Godot method bindings
 };
 

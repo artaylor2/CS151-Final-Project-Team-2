@@ -2,4 +2,8 @@
 
 Import('env')
 
-env.add_source_files(env.modules_sources, "*.cpp") # Add all cpp files to the build
+env.Append(LIBPATH = ['/usr/lib/x86_64-linux-gnu'])
+env.Append(LIBS=['iw'])
+
+module_env = env.Clone() # Clone build environment to allow for compiler flags
+module_env.add_source_files(env.modules_sources, "*.cpp") # Add all cpp files to the build

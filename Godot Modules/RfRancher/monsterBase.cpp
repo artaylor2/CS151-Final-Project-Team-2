@@ -18,34 +18,12 @@ void MonsterBase::init(int ssidHash)
     this->lastHungerTick = time(nullptr); // Set last fed to current time
     
     // Create rgb values by coverting int to Hex
-    String hexColor = vformat("%x", ssidHash);
+    hexColor = vformat("%x", ssidHash);
 
     while(hexColor.size() < 7)
     {
         hexColor += '0';
     }
-
-    print_line(vformat("Color Hex: %s", hexColor));
-
-    String tempR = "", tempG = "", tempB = ""; // Hold parts of hex color
-
-    // Feed in the red values from hex color
-    tempR = hexColor.substr(0,2);
-
-    // Green values from hex color
-    tempG = hexColor.substr(2,2);
-
-    // Blue values from hex color
-    tempB = hexColor.substr(4,2);
-
-    // Convert to decimal and fill red
-    color[0] = tempR.hex_to_int();
-
-    // Convert to decimal and fill Green
-    color[1] = tempG.hex_to_int();
-
-    // Convert to decimal and fill Blue
-    color[2] = tempB.hex_to_int();
 
     // Set blank name
     this->name = "";
@@ -144,14 +122,39 @@ String MonsterBase::getName()
     return this->name;
 }
 
+String MonsterBase::getColor()
+{
+    return this->hexColor;
+}
+
 float MonsterBase::getHappy()
 {
     return this->happiness;
 }
 
+float MonsterBase::getHealth()
+{
+    return this->hp;
+}
+
 float MonsterBase::getHunger()
 {
     return this->hunger;
+}
+
+int MonsterBase::getMaxHappy()
+{
+    return this->maxHappiness;
+}
+
+int MonsterBase::getMaxHealth()
+{
+    return this->maxHp;
+}
+
+int MonsterBase::getMaxHunger()
+{
+    return this->maxHunger;
 }
 
 bool MonsterBase::getDead()
@@ -170,8 +173,12 @@ void MonsterBase::_bind_methods() // Godot method bindings
     ClassDB::bind_method(D_METHOD("setName"), &MonsterBase::setName);
     
     ClassDB::bind_method(D_METHOD("getName"), &MonsterBase::getName);
+    ClassDB::bind_method(D_METHOD("getHealth"), &MonsterBase::getHealth);
     ClassDB::bind_method(D_METHOD("getHappy"), &MonsterBase::getHappy);
     ClassDB::bind_method(D_METHOD("getHunger"), &MonsterBase::getHunger);
+    ClassDB::bind_method(D_METHOD("getMaxHealth"), &MonsterBase::getMaxHealth);
+    ClassDB::bind_method(D_METHOD("getMaxHappy"), &MonsterBase::getMaxHappy);
+    ClassDB::bind_method(D_METHOD("getMaxHunger"), &MonsterBase::getMaxHunger);
     ClassDB::bind_method(D_METHOD("getDead"), &MonsterBase::getDead);
     ClassDB::bind_method(D_METHOD("getType"), &MonsterBase::getType);
 }
