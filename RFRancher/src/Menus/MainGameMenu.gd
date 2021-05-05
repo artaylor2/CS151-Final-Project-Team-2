@@ -35,11 +35,6 @@ func spawn_button(my_random_number):
 	var instance_codex = codex.instance()
 	instance_codex.save_scene()
 	
-	print(MonsterData.file_names[MonsterData.num_monsters - 1])
-	
-	for x in MonsterData.file_names.size() - 1:
-		print(MonsterData.file_names[x])
-	
 	# Swap scenes to appropriate level
 	get_tree().change_scene(MonsterData.levels[index])
 

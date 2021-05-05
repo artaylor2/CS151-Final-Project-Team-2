@@ -3,25 +3,26 @@
 [ext_resource path="res://assets/font_default.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/interface/theme/default_theme.tres" type="Theme" id=2]
 [ext_resource path="res://assets/menus/HappyFace.png" type="Texture" id=3]
-[ext_resource path="res://assets/interface/bar/life_bar/bg.png" type="Texture" id=4]
-[ext_resource path="res://assets/menus/HungerIcon.png" type="Texture" id=5]
+[ext_resource path="res://assets/menus/HungerIcon.png" type="Texture" id=4]
+[ext_resource path="res://assets/interface/bar/life_bar/bg.png" type="Texture" id=5]
 [ext_resource path="res://assets/menus/CloseButton.png" type="Texture" id=6]
 [ext_resource path="res://assets/interface/bar/life_bar/fill.png" type="Texture" id=7]
 [ext_resource path="res://assets/interface/counter/label_bg.png" type="Texture" id=8]
 [ext_resource path="res://assets/menus/Arrow_Reverse.png" type="Texture" id=9]
-[ext_resource path="res://assets/menus/Arrow.png" type="Texture" id=10]
-[ext_resource path="res://assets/backgrounds/Codex_Background_Lower.png" type="Texture" id=11]
-[ext_resource path="res://assets/player.png" type="Texture" id=12]
-[ext_resource path="res://src/Menus/CodexInfo.gd" type="Script" id=13]
-[ext_resource path="res://assets/menus/title_screen/buttons/MenuButton.gd" type="Script" id=14]
+[ext_resource path="res://assets/player.png" type="Texture" id=10]
+[ext_resource path="res://src/Menus/CodexInfo.gd" type="Script" id=11]
+[ext_resource path="res://assets/menus/Arrow.png" type="Texture" id=12]
+[ext_resource path="res://assets/menus/title_screen/buttons/MenuButton.gd" type="Script" id=13]
+[ext_resource path="res://assets/backgrounds/Codex_Background_Lower.png" type="Texture" id=14]
 
 [node name="CodexTemplate" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 13 )
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+index = 1
 
 [node name="CloseContainer" type="CenterContainer" parent="."]
 anchor_left = 0.799
@@ -43,7 +44,7 @@ margin_bottom = 86.0
 rect_min_size = Vector2( 92, 60 )
 icon = ExtResource( 6 )
 flat = true
-script = ExtResource( 14 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -104,13 +105,13 @@ __meta__ = {
 
 [node name="Hunger" type="HBoxContainer" parent="StatusBox/CanvasLayer"]
 anchor_left = 0.021
-anchor_top = 0.572
+anchor_top = 0.583
 anchor_right = 0.993
-anchor_bottom = 0.624
-margin_left = -0.0960007
-margin_top = 0.271912
-margin_right = 0.0319824
-margin_bottom = 0.0239258
+anchor_bottom = 0.635
+margin_left = -0.0960016
+margin_top = 0.00793457
+margin_right = 0.0320435
+margin_bottom = -0.240112
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -139,7 +140,7 @@ margin_left = -1.0474
 margin_top = -0.019002
 margin_right = -1.04741
 margin_bottom = 0.0189972
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
@@ -167,21 +168,21 @@ margin_left = 164.0
 margin_right = 560.0
 margin_bottom = 53.0
 value = 100.0
-texture_under = ExtResource( 4 )
+texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 7 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Happiness" type="HBoxContainer" parent="StatusBox/CanvasLayer"]
-anchor_left = 0.016
-anchor_top = 0.467
+anchor_left = 0.021
+anchor_top = 0.521
 anchor_right = 0.984
-anchor_bottom = 0.519
-margin_left = -0.216001
-margin_top = 4.79199
-margin_right = 2.216
-margin_bottom = 4.54401
+anchor_bottom = 0.572
+margin_left = -0.0960007
+margin_top = -0.504028
+margin_right = 5.216
+margin_bottom = 0.271973
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -235,8 +236,79 @@ margin_left = 164.0
 margin_right = 560.0
 margin_bottom = 53.0
 value = 65.0
-texture_under = ExtResource( 4 )
+texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 7 )
+
+[node name="Health" type="HBoxContainer" parent="StatusBox/CanvasLayer"]
+anchor_left = 0.021
+anchor_top = 0.46
+anchor_right = 0.993
+anchor_bottom = 0.512
+margin_left = -0.0960016
+margin_top = -0.0400696
+margin_right = 0.0320435
+margin_bottom = -0.288086
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Counter" type="NinePatchRect" parent="StatusBox/CanvasLayer/Health"]
+margin_right = 160.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 160, 0 )
+texture = ExtResource( 8 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="HealthIcon" type="TextureRect" parent="StatusBox/CanvasLayer/Health/Counter"]
+anchor_left = 0.055
+anchor_top = 0.123
+anchor_right = 0.305
+anchor_bottom = 0.877
+margin_left = -1.0474
+margin_top = -0.019002
+margin_right = -1.04741
+margin_bottom = 0.0189972
+texture = ExtResource( 4 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBarLabel" type="Label" parent="StatusBox/CanvasLayer/Health/Counter"]
+anchor_left = 0.319
+anchor_right = 0.962
+anchor_bottom = 1.019
+margin_left = -3.04
+margin_right = 0.0799866
+margin_bottom = 0.992996
+theme = ExtResource( 2 )
+text = "%s/%s"
+align = 2
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="HealthBar" type="TextureProgress" parent="StatusBox/CanvasLayer/Health"]
+margin_left = 164.0
+margin_right = 560.0
+margin_bottom = 53.0
+value = 100.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 7 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Menu" type="CanvasLayer" parent="."]
 layer = -2
@@ -245,7 +317,7 @@ layer = -2
 anchor_top = 0.438477
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 11 )
+texture = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -296,9 +368,9 @@ visible = false
 margin_right = 196.0
 margin_bottom = 92.0
 rect_min_size = Vector2( 184, 86 )
-icon = ExtResource( 10 )
+icon = ExtResource( 12 )
 flat = true
-script = ExtResource( 14 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -323,7 +395,7 @@ margin_bottom = 92.0
 rect_min_size = Vector2( 184, 86 )
 icon = ExtResource( 9 )
 flat = true
-script = ExtResource( 14 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -332,7 +404,7 @@ __meta__ = {
 [node name="MonsterSprite" type="Sprite" parent="."]
 position = Vector2( 232, 272 )
 scale = Vector2( 2.05112, 2.85323 )
-texture = ExtResource( 12 )
+texture = ExtResource( 10 )
 
 [node name="FeedContainer" type="CenterContainer" parent="."]
 anchor_left = 0.799
