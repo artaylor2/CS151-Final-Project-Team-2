@@ -5,8 +5,8 @@ var global_index = 0
 
 var file_names = [] setget set_codex
 # Level file name for spawn button to transition to correct scene
-var levels : = ["res://src/Levels/ForestLevel.tscn", "res://src/Levels/FireLevel.tscn", "res://src/Levels/RockLevel.tscn",
-				"res://src/Levels/IceLevel.tscn", "res://src/Levels/OceanLevel.tscn", "res://src/Levels/GhostLevel.tscn"]
+var levels : = ["res://src/Levels/GhostLevel.tscn", "res://src/Levels/FireLevel.tscn", "res://src/Levels/WaterLevel.tscn",
+				"res://src/Levels/ForestLevel.tscn", "res://src/Levels/RockLevel.tscn", "res://src/Levels/IceLevel.tscn"]
 
 var types : = ["Ghost", "Fire", "Water", "Forest", "Rock", "Ice"]
 
