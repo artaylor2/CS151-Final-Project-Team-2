@@ -1,4 +1,21 @@
+/**
+ * @file fireType.cpp
+ * @author Taylor, Alixandra (artaylor2@students.nic.edu)
+ * @brief Forest type monster definition file
+ * @version 0.1
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include "forestType.h"
+
+/**
+ * @brief Initialize this forest type monster
+ * 
+ * @param ssidHash Integer from hash to generate from
+ */
 
 void ForestType::init(int ssidHash)
 {
@@ -13,6 +30,10 @@ void ForestType::init(int ssidHash)
     return;
 }
 
+/**
+ * @brief Update all of the monster's vitals
+ * 
+ */
 void ForestType::doTick() // Remove .5 point of hunger and 1 happiness per hour
 {
     print_line(vformat("Barkat Tick"));
@@ -51,6 +72,14 @@ void ForestType::doTick() // Remove .5 point of hunger and 1 happiness per hour
     }
 }
 
+/**
+ * @brief Call MonsterBase's eat function
+ * 
+ * @param food Amount the monster is eating
+ * @return true Eat was successful
+ * @return false Eat failed (monster dead)
+ */
+
 void ForestType::eat(int food)
 {
     MonsterBase::eat(food);
@@ -58,6 +87,10 @@ void ForestType::eat(int food)
     return;
 }
 
+/**
+ * @brief Set Godot command bindings
+ * 
+ */
 void ForestType::_bind_methods() // Godot method bindings
 {
     ClassDB::bind_method(D_METHOD("init"), &ForestType::init);

@@ -1,4 +1,5 @@
 # config.py
+# Configure SCons environment
 
 def can_build(env, platform):
     return True

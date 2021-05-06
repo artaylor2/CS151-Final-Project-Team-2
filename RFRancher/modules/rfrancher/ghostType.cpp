@@ -1,4 +1,21 @@
+/**
+ * @file fireType.cpp
+ * @author Porath, Jacob & Taylor, Alixandra
+ * @brief Ghost type monster definition file
+ * @version 0.1
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include "ghostType.h"
+
+/**
+ * @brief Initialize this ghost type monster
+ * 
+ * @param ssidHash Integer from hash to generate from
+ */
 
 void GhostType::init(int ssidHash)
 {
@@ -10,6 +27,11 @@ void GhostType::init(int ssidHash)
 
     return;
 }
+
+/**
+ * @brief Update all of the monster's vitals
+ * 
+ */
 
 void GhostType::doTick() // Remove 1 point of hunger and .5 happiness per hour
 {
@@ -49,12 +71,24 @@ void GhostType::doTick() // Remove 1 point of hunger and .5 happiness per hour
     }
 }
 
+/**
+ * @brief Call MonsterBase's eat method
+ * 
+ * @param food Amount the monster is eating
+ */
+
 void GhostType::eat(int food)
 {
     MonsterBase::eat(food);
 
     return;
 }
+
+
+/**
+ * @brief Set Godot command bindings
+ * 
+ */
 
 void GhostType::_bind_methods() // Godot method bindings
 {

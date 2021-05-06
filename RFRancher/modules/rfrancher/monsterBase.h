@@ -1,19 +1,35 @@
+/**
+ * @file fireType.cpp
+ * @author Porath, Jacob & Taylor, Alixandra
+ * @brief Base type monster template declaraction
+ * @version 0.1
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef MONSTERBASE_H
 #define MONSTERBASE_H
 
-#include <iostream> // Testing
+#include <iostream> 
 #include <string>
 #include <ctime>
 
-#include "core/color.h"
-#include "scene/main/node.h"
+#include "scene/main/node.h"    // Godot Node type library
 #include "core/ustring.h"   // Godot string library
 
+/**
+ * @brief MonsterBase class
+ * 
+ */
 class MonsterBase : public Node
 {
+    // Godot class wrapping macro
     GDCLASS(MonsterBase, Node)
 
 public:
+    // Godot timing flags
     void _notification(int p_what)
     {
         if(p_what == NOTIFICATION_READY)   
@@ -26,16 +42,16 @@ public:
         }
     }
 
-    MonsterBase() = default ; // Default constructor as if ssidHash == 1
-    void init(int ssidHash);
+    MonsterBase() = default ;     // Default constructor as if ssidHash == 1
+    void init(int ssidHash);      // Initialize the monster
     void setName(String newName); // May need refactoring for GUI integration
-    bool eat(int food);
-    bool play();
-    void doTick(); // update happiness and hunger values
+    bool eat(int food);           // Eat food
+    bool play();                  // Play
+    void doTick();                // update happiness and hunger values
 
-    // Info return methods
-    String getName();
-    String getColor();
+    // Getter methods
+    String getName();       
+    String getColor();  
     
     float getHappy();
     float getHealth();
@@ -48,10 +64,11 @@ public:
     int getType();  
 
 protected:
+    // Enum for monster types
     enum monstTypes {Undefined = -1, Ghost, Fire, Water, Forest, Rock, Ice};    
     
-    String name;
-    String hexColor;
+    String name; // Monster's name
+    String hexColor; // Monster's color augment value
     
     float happiness; // 0-maxHappiness
     int maxHappiness; // 15

@@ -1,20 +1,38 @@
+/**
+ * @file fireType.cpp
+ * @author Porath, Jacob & Taylor, Alixandra
+ * @brief RfRancher monster and wifi wrapper object definitions
+ * @version 0.1
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include "rfRancher.h"
 
+/**
+ * @brief getMonster() test that allows for custom SSIDs
+ * 
+ * @param curSSID The SSID to test
+ * @return Node* A new monster object
+ */
 Node * RfRancher::testGetMonster(String curSSID)
 {  
+    // Seed the RNG
     srand(time(NULL));
 
-    // If no SSID is retrieved generate a random one instead.
+    // If an empty SSID is retrieved generate a random monster instead.
     if(curSSID.empty())
     {
         curSSID += rand();
     }
 
-    // Get new hash and type selection integer
+    // Get new hash and type selection integer from the SSID
     int newHash = hashSsid(curSSID);
     int selection = newHash % 6;
 
-    // Create monster pointer
+    // Create monster pointer according to moduloed hash and return
     if(selection == 0)
     {
         GhostType* m = new GhostType;
@@ -53,13 +71,22 @@ Node * RfRancher::testGetMonster(String curSSID)
     }    
 }
 
+/**
+ * @brief Get a new monster
+ * 
+ * @return Node* Newly generated monster object
+ */
 Node * RfRancher::getMonster()
 {  
+    // Seed the RNG and set the default SSID
     srand(time(NULL));
     String curSSID = "";
 
+    // WiFi device ID
     std::string wifiID = "";
-	try
+	
+    // Try to scan the /proc/net/wireless file for this machine's device ID
+    try
 	{
     	wifiID = getDeviceID();
 	}
@@ -68,6 +95,7 @@ Node * RfRancher::getMonster()
 
 	}
 
+    // If one isn't found then use the old SSID text file instead
 	if(!wifiID.empty())
 	{
 		if(!sniffWifi(&wifiID[0], "./scans/sniffResults"))
@@ -82,15 +110,17 @@ Node * RfRancher::getMonster()
 
 	// Open sniffer results file
 	std::ifstream in("./scans/sniffResults");
-    
+
+    // Try to open the scan file
 	if(!in.is_open())
 	{
-		printf("Couldn't get device ID, using old data.");
+		printf("Scan file not found, generating random.");
 	}
     else
     {
         string temp;
-        // Get strongest ssid
+
+        // Get strongest ssid (first result) from the file
 	    getline(in, temp);
         curSSID = &temp[0];
 	    in.close(); // Close the file
@@ -106,7 +136,7 @@ Node * RfRancher::getMonster()
     int newHash = hashSsid(curSSID);
     int selection = newHash % 6;
 
-    // Create monster pointer
+    // Create and return the new monster pointer
     if(selection == 0)
     {
         GhostType* m = new GhostType;
@@ -145,6 +175,12 @@ Node * RfRancher::getMonster()
     }    
 }
 
+/**
+ * @brief Hash a given string
+ * 
+ * @param ssid The string being hashed
+ * @return int The resulting hash integer
+ */
 int RfRancher::hashSsid(String ssid)
 {
     int total = 1;
@@ -159,6 +195,10 @@ int RfRancher::hashSsid(String ssid)
     return total;
 }
 
+/**
+ * @brief Godot bindings method
+ * 
+ */
 void RfRancher::_bind_methods()
 {
     ClassDB::bind_method(D_METHOD("getMonster"), &RfRancher::getMonster);
