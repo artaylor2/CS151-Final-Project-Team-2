@@ -10,11 +10,36 @@ Our concept design of Rf Rancher runs on linux systems using the [GoDot game eng
 - More monsters of each type.
 - More abilities further defining each monster
 - Expanded gameplay such as monster battles, more envionment interaction, etc.
+- An environment preview system that takes the 3-5 strongest signals and shows what potential environments are nearby
+- Capture minigames
+- Monster growth/training/exp
 ## **How to Download and Install Rf Rancher:**
 ### Requirements:
-1. ...
+note: This guide only applies to building the project for Ubuntu Linux
+1. Install Wireless Tools for Linux dev library (libiw-dev)
+```
+{
+sudo apt-get install libiw-dev    
+}
+```
+2. Install all necessary tools for building Godot 3.3 from source (one-line install below)
+```
+}
+sudo apt-get install build-essential scons pkg-config libx11-dev libxcursor-dev libxinerama-dev libgl1-mesa-dev libglu-dev libasound2-dev libpulse-dev libudev-dev libxi-dev libxrandr-dev yasm
+}
+```
+3. Download the Godot 3.3 source repository
+```
+{
+git clone https://github.com/godotengine/godot.git
+}
+```
 ### Installation:
-1. ...
+1. Copy the contents of the 'modules' folder in the RfRancher project in to, './modules/' folder of the cloned Godot 3.3 source code repository 
+2. Navigate to the root folder of the Godot 3.3 source code repository, and open a terminal window.
+3. Input ``` scons -j4 -platform=x11 ``` to run the SCons build tool and compile the engine using the custom RFRancher module
+4. Navigate to the './bin' folder Godot 3.3 source code repository and run the file named, 'godot.x11.tools.64'.
+5. Select the 'Import' button on the right side of the editor, and navigate to the root directory of the RFRancher repository. Select the "project.godot" file to load the project profile and open the game in the editor.
 ## **Contribution:**
 At this time, Rf Rancher is not being developed further by our small group of three. However, if you would like to get in contact with us for any reason, we are available via the Email addresses below:
 - Alix Taylor - artaylor2@students.nic.edu
