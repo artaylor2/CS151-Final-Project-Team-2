@@ -18,21 +18,15 @@ Our concept design of Rf Rancher runs on linux systems using the [GoDot game eng
 note: This guide only applies to building the project for Ubuntu Linux
 1. Install Wireless Tools for Linux dev library (libiw-dev)
 ```
-{
 sudo apt-get install libiw-dev    
-}
 ```
 2. Install all necessary tools for building Godot 3.3 from source (one-line install below)
 ```
-}
 sudo apt-get install build-essential scons pkg-config libx11-dev libxcursor-dev libxinerama-dev libgl1-mesa-dev libglu-dev libasound2-dev libpulse-dev libudev-dev libxi-dev libxrandr-dev yasm
-}
 ```
 3. Download the Godot 3.3 source repository
 ```
-{
 git clone https://github.com/godotengine/godot.git
-}
 ```
 ### Installation:
 1. Copy the contents of the 'modules' folder in the RfRancher project in to, './modules/' folder of the cloned Godot 3.3 source code repository 
