@@ -15,12 +15,13 @@ Our concept design of Rf Rancher runs on linux systems using the [GoDot game eng
 - Monster growth/training/exp
 ## **How to Download and Install Rf Rancher:**
 ### Requirements:
-note: This guide only applies to building the project for Ubuntu Linux
+*note: This guide only applies to building the project for Ubuntu Linux*
+
 1. Install Wireless Tools for Linux dev library (libiw-dev)
 ```
 sudo apt-get install libiw-dev    
 ```
-2. Install all necessary tools for building Godot 3.3 from source (one-line install below)
+2. Install all necessary tools for building Godot 3.3 from source in Ubuntu (one-line install prompt included below)
 ```
 sudo apt-get install build-essential scons pkg-config libx11-dev libxcursor-dev libxinerama-dev libgl1-mesa-dev libglu-dev libasound2-dev libpulse-dev libudev-dev libxi-dev libxrandr-dev yasm
 ```
@@ -29,11 +30,12 @@ sudo apt-get install build-essential scons pkg-config libx11-dev libxcursor-dev 
 git clone https://github.com/godotengine/godot.git
 ```
 ### Installation:
-1. Copy the contents of the 'modules' folder in the RfRancher project in to, './modules/' folder of the cloned Godot 3.3 source code repository 
+1. Copy the contents of the 'modules' folder in the RfRancher project repository in to, './modules' folder of the cloned Godot 3.3 source code repository 
 2. Navigate to the root folder of the Godot 3.3 source code repository, and open a terminal window.
-3. Input ``` scons -j4 -platform=x11 ``` to run the SCons build tool and compile the engine using the custom RFRancher module
-4. Navigate to the './bin' folder Godot 3.3 source code repository and run the file named, 'godot.x11.tools.64'.
-5. Select the 'Import' button on the right side of the editor, and navigate to the root directory of the RFRancher repository. Select the "project.godot" file to load the project profile and open the game in the editor.
+3. Input ``` scons -j4 -platform=x11 ``` to run the SCons build tool in the source root folder and compile the engine while including the custom RFRancher module and libiw libraries.
+4. Navigate to the './bin' folder Godot 3.3 source code repository and run the file named, 'godot.x11.tools.64'. This is the extended Godot editor.
+5. Select the 'Import' button on the right side of the editor, and navigate to the root directory of the RFRancher repository. Select the 'project.godot' file to load the project profile and open the game in the editor.
+6. Press the 'Play' button in the upper right hand corner of the editor to run the game in debug mode.
 ## **Contribution:**
 At this time, Rf Rancher is not being developed further by our small group of three. However, if you would like to get in contact with us for any reason, we are available via the Email addresses below:
 - Alix Taylor - artaylor2@students.nic.edu
