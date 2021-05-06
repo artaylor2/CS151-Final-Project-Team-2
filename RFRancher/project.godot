@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="New Game Project"
+run/main_scene="res://src/Menus/MainGameMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

@@ -1,14 +1,16 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/menus/title_screen/fonts/montserrat_48.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/menus/title_screen/buttons/MenuButton.gd" type="Script" id=2]
-[ext_resource path="res://src/Levels/ForestLevelMenuControl.gd" type="Script" id=3]
-[ext_resource path="res://assets/backgrounds/ForestBackground.png" type="Texture" id=4]
+[ext_resource path="res://src/Levels/Level_Controls.gd" type="Script" id=3]
+[ext_resource path="res://assets/sprites/MonsterSprite.png" type="Texture" id=4]
 [ext_resource path="res://assets/menus/CloseButton.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/cat.jpg" type="Texture" id=6]
+[ext_resource path="res://assets/backgrounds/pixil-frame-0 (22).png" type="Texture" id=6]
 [ext_resource path="res://assets/tileset.png" type="Texture" id=7]
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=8]
-[ext_resource path="res://src/Interfaces/Interface.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/menus/Forest_Type.png" type="Texture" id=9]
+[ext_resource path="res://src/Levels/Monster_Sprite.gd" type="Script" id=10]
+[ext_resource path="res://assets/backgrounds/ForestBackground.png" type="Texture" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
@@ -103,13 +105,37 @@ __meta__ = {
 }
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
-layer = 0
 
 [node name="background" type="TextureRect" parent="BackgroundLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -324.0
-texture = ExtResource( 4 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LowerPanel" type="TextureRect" parent="BackgroundLayer"]
+anchor_top = 0.683
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.392029
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MonsterType" type="TextureRect" parent="BackgroundLayer"]
+anchor_left = 0.056
+anchor_top = 0.719
+anchor_right = 0.193
+anchor_bottom = 0.796
+margin_left = -0.256001
+margin_top = -0.256042
+margin_right = -26.168
+margin_bottom = -27.1041
+rect_min_size = Vector2( 79, 79 )
+texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -122,10 +148,10 @@ centered_textures = true
 collision_layer = 8
 collision_mask = 2147483648
 format = 1
-tile_data = PoolIntArray( 65535, 0, 0, 7, 0, 0, 131071, 0, 0, 65543, 0, 0, 196607, 0, 0, 131079, 0, 0, 262143, 0, 0, 196615, 0, 0, 327679, 0, 0, 262151, 0, 0, 393215, 0, 0, 327687, 0, 0, 458751, 0, 0, 393223, 0, 0, 524287, 0, 0, 458759, 0, 0, 589823, 0, 0, 524295, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0 )
+tile_data = PoolIntArray( 65535, 0, 0, 7, 0, 0, 131071, 0, 0, 65543, 0, 0, 196607, 0, 0, 131079, 0, 0, 262143, 0, 0, 196615, 0, 0, 327679, 0, 0, 262151, 0, 0, 393215, 0, 0, 327687, 0, 0, 458751, 0, 0, 393223, 0, 0, 524287, 0, 0, 458759, 0, 0, 589823, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0 )
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 5
 
 [node name="MenuControl" type="Control" parent="InterfaceLayer"]
 margin_left = -1.0
@@ -163,28 +189,34 @@ __meta__ = {
 scene_to_load = "res://src/Menus/MainGameMenu.tscn"
 
 [node name="CaptureContainer" type="CenterContainer" parent="InterfaceLayer/MenuControl"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -60.0
+anchor_left = 0.181
+anchor_top = 0.812
+anchor_right = 0.806
+anchor_bottom = 0.871
+margin_left = -0.256004
+margin_top = 0.511963
+margin_right = -0.256042
+margin_bottom = 0.0959473
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Capture" type="Button" parent="InterfaceLayer/MenuControl/CaptureContainer"]
-margin_left = 108.0
-margin_right = 468.0
+margin_left = 77.0
+margin_right = 281.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 360, 60 )
+rect_min_size = Vector2( 204, 60 )
 flat = true
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+scene_to_load = "res://src/Menus/MainGameMenu.tscn"
 
 [node name="Label" type="Label" parent="InterfaceLayer/MenuControl/CaptureContainer/Capture"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -88.452
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
@@ -194,30 +226,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InterfaceLayer" type="CanvasLayer" parent="InterfaceLayer/MenuControl"]
-
-[node name="Interface" parent="InterfaceLayer/MenuControl/InterfaceLayer" instance=ExtResource( 9 )]
-anchor_left = -0.002
-anchor_top = 0.814
-margin_left = 0.152
-margin_top = 0.463989
-margin_right = 0.0
-margin_bottom = 0.0
-
 [node name="CharacterLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 13
 
 [node name="Barkat" type="KinematicBody2D" parent="CharacterLayer"]
-position = Vector2( 495.125, -149.624 )
+position = Vector2( 288.125, -93.624 )
 collision_mask = 8
 script = ExtResource( 8 )
 gravity = 4000.0
 speed = Vector2( 800, 1400 )
 
 [node name="player" type="Sprite" parent="CharacterLayer/Barkat"]
-position = Vector2( -3.3661, -4.43024 )
-scale = Vector2( 0.135581, 0.164862 )
-texture = ExtResource( 6 )
+position = Vector2( -0.253853, -86.8459 )
+scale = Vector2( 1.4246, 1.30076 )
+texture = ExtResource( 4 )
+script = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterLayer/Barkat"]
 shape = SubResource( 6 )

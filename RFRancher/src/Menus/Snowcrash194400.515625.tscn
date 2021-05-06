@@ -1,0 +1,440 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/font_default.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/interface/theme/default_theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/sprites/MonsterSprite.png" type="Texture" id=3]
+[ext_resource path="res://assets/menus/HappyFace.png" type="Texture" id=4]
+[ext_resource path="res://assets/menus/HungerIcon.png" type="Texture" id=5]
+[ext_resource path="res://assets/menus/CloseButton.png" type="Texture" id=6]
+[ext_resource path="res://assets/backgrounds/pixil-frame-0 (13).png" type="Texture" id=7]
+[ext_resource path="res://assets/interface/bar/life_bar/bg.png" type="Texture" id=8]
+[ext_resource path="res://assets/interface/bar/life_bar/fill.png" type="Texture" id=9]
+[ext_resource path="res://assets/interface/counter/label_bg.png" type="Texture" id=10]
+[ext_resource path="res://assets/menus/Arrow_Reverse.png" type="Texture" id=11]
+[ext_resource path="res://assets/menus/Health.png" type="Texture" id=12]
+[ext_resource path="res://assets/menus/title_screen/buttons/MenuButton.gd" type="Script" id=13]
+[ext_resource path="res://src/Menus/CodexInfo.gd" type="Script" id=14]
+[ext_resource path="res://assets/backgrounds/Codex_Background_Lower.png" type="Texture" id=15]
+[ext_resource path="res://assets/menus/Arrow.png" type="Texture" id=16]
+
+[node name="CodexTemplate" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseContainer" type="CenterContainer" parent="."]
+anchor_left = 0.799
+anchor_top = 0.023
+anchor_right = 0.958
+anchor_bottom = 0.107
+margin_left = -0.223999
+margin_top = 0.447998
+margin_right = 0.191956
+margin_bottom = 0.431992
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="CloseButton" type="Button" parent="CloseContainer"]
+margin_right = 92.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 92, 60 )
+icon = ExtResource( 6 )
+flat = true
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Menus/MainGameMenu.tscn"
+
+[node name="SkillBox" type="VBoxContainer" parent="."]
+anchor_left = 0.061
+anchor_top = 0.664
+anchor_right = 0.941
+anchor_bottom = 0.863
+margin_left = -0.136002
+margin_top = 0.0639648
+margin_right = -0.0160522
+margin_bottom = 0.287964
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MonsterName" type="Label" parent="SkillBox"]
+margin_right = 506.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = ExtResource( 1 )
+text = "Name: %s"
+valign = 1
+
+[node name="MonsterType" type="Label" parent="SkillBox"]
+margin_top = 71.0
+margin_right = 506.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = ExtResource( 1 )
+text = "Type: %s"
+
+[node name="StatusBox" type="VBoxContainer" parent="."]
+anchor_top = 0.448
+anchor_right = 1.0
+anchor_bottom = 0.648
+margin_top = 2.24799
+margin_bottom = 0.447998
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="StatusBox"]
+
+[node name="Hunger" type="HBoxContainer" parent="StatusBox/CanvasLayer"]
+anchor_left = 0.021
+anchor_top = 0.583
+anchor_right = 0.993
+anchor_bottom = 0.635
+margin_left = -0.0960016
+margin_top = 0.00793457
+margin_right = 0.0320435
+margin_bottom = -0.240112
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Counter" type="NinePatchRect" parent="StatusBox/CanvasLayer/Hunger"]
+margin_right = 160.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 160, 0 )
+texture = ExtResource( 10 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="HungerIcon" type="TextureRect" parent="StatusBox/CanvasLayer/Hunger/Counter"]
+anchor_left = 0.055
+anchor_top = 0.123
+anchor_right = 0.305
+anchor_bottom = 0.877
+margin_left = -1.0474
+margin_top = -0.019002
+margin_right = -1.04741
+margin_bottom = 0.0189972
+texture = ExtResource( 5 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HungerLabel" type="Label" parent="StatusBox/CanvasLayer/Hunger/Counter"]
+anchor_left = 0.319
+anchor_right = 0.962
+anchor_bottom = 1.019
+margin_left = -3.04
+margin_right = 0.0799866
+margin_bottom = 0.992996
+theme = ExtResource( 2 )
+text = "%s/%s"
+align = 2
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="HungerBar" type="TextureProgress" parent="StatusBox/CanvasLayer/Hunger"]
+margin_left = 164.0
+margin_right = 560.0
+margin_bottom = 53.0
+value = 100.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 9 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Happiness" type="HBoxContainer" parent="StatusBox/CanvasLayer"]
+anchor_left = 0.021
+anchor_top = 0.521
+anchor_right = 0.984
+anchor_bottom = 0.572
+margin_left = -0.0960007
+margin_top = -0.504028
+margin_right = 5.216
+margin_bottom = 0.271973
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Counter" type="NinePatchRect" parent="StatusBox/CanvasLayer/Happiness"]
+margin_right = 160.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 160, 0 )
+texture = ExtResource( 10 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HappyIcon" type="TextureRect" parent="StatusBox/CanvasLayer/Happiness/Counter"]
+anchor_left = 0.05
+anchor_top = 0.113
+anchor_right = 0.294
+anchor_bottom = 0.868
+margin_left = -1.0
+margin_top = 0.0109997
+margin_right = -0.0400009
+margin_bottom = -0.00400162
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HappinessLabel" type="Label" parent="StatusBox/CanvasLayer/Happiness/Counter"]
+anchor_left = 0.306
+anchor_right = 0.969
+anchor_bottom = 1.038
+margin_left = 0.0399971
+margin_right = -0.0400085
+margin_bottom = -0.0140076
+theme = ExtResource( 2 )
+text = "%s/%s"
+align = 2
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="HappinessBar" type="TextureProgress" parent="StatusBox/CanvasLayer/Happiness"]
+margin_left = 164.0
+margin_right = 560.0
+margin_bottom = 53.0
+value = 65.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 9 )
+
+[node name="Health" type="HBoxContainer" parent="StatusBox/CanvasLayer"]
+anchor_left = 0.021
+anchor_top = 0.46
+anchor_right = 0.993
+anchor_bottom = 0.512
+margin_left = -0.0960016
+margin_top = -0.0400696
+margin_right = 0.0320435
+margin_bottom = -0.288086
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Counter" type="NinePatchRect" parent="StatusBox/CanvasLayer/Health"]
+margin_right = 160.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 160, 0 )
+texture = ExtResource( 10 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="HealthIcon" type="TextureRect" parent="StatusBox/CanvasLayer/Health/Counter"]
+anchor_left = 0.055
+anchor_top = 0.123
+anchor_right = 0.305
+anchor_bottom = 0.877
+margin_left = -1.0474
+margin_top = -0.019002
+margin_right = -1.04741
+margin_bottom = 0.0189972
+texture = ExtResource( 12 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBarLabel" type="Label" parent="StatusBox/CanvasLayer/Health/Counter"]
+anchor_left = 0.319
+anchor_right = 0.962
+anchor_bottom = 1.019
+margin_left = -3.04
+margin_right = 0.0799866
+margin_bottom = 0.992996
+theme = ExtResource( 2 )
+text = "%s/%s"
+align = 2
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="HealthBar" type="TextureProgress" parent="StatusBox/CanvasLayer/Health"]
+margin_left = 164.0
+margin_right = 560.0
+margin_bottom = 53.0
+value = 100.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 9 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Menu" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="MenuBackground" type="TextureRect" parent="Menu"]
+anchor_top = 0.438477
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+anchor_right = 0.998
+anchor_bottom = 0.438
+margin_right = 246.152
+margin_bottom = 241.488
+rect_scale = Vector2( 0.7, 0.65 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TypePicture" type="TextureRect" parent="."]
+anchor_left = 0.042
+anchor_top = 0.023
+anchor_right = 0.201
+anchor_bottom = 0.107
+margin_left = -0.192001
+margin_top = 0.447998
+margin_right = 0.223999
+margin_bottom = 0.431992
+rect_min_size = Vector2( 92, 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Backwards_Container" type="CenterContainer" parent="."]
+anchor_left = 0.056
+anchor_top = 0.885
+anchor_right = 0.396
+anchor_bottom = 0.975
+margin_left = -0.256001
+margin_top = -0.240051
+margin_right = -0.095993
+margin_bottom = -0.400024
+rect_min_size = Vector2( 184, 86 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="GoBack" type="Button" parent="Backwards_Container"]
+visible = false
+margin_right = 196.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 184, 86 )
+icon = ExtResource( 16 )
+flat = true
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Forwards_Container" type="CenterContainer" parent="."]
+anchor_left = 0.625
+anchor_top = 0.885
+anchor_right = 0.965
+anchor_bottom = 0.975
+margin_top = -0.240051
+margin_right = 0.160034
+margin_bottom = -0.400024
+rect_min_size = Vector2( 184, 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoNext" type="Button" parent="Forwards_Container"]
+visible = false
+margin_right = 196.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 184, 86 )
+icon = ExtResource( 11 )
+flat = true
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MonsterSprite" type="Sprite" parent="."]
+position = Vector2( 215.361, 244.013 )
+scale = Vector2( 1.57836, 1.34275 )
+texture = ExtResource( 3 )
+
+[node name="FeedContainer" type="CenterContainer" parent="."]
+anchor_left = 0.799
+anchor_top = 0.273
+anchor_right = 0.958
+anchor_bottom = 0.357
+margin_left = -0.223999
+margin_top = 0.447998
+margin_right = 0.191956
+margin_bottom = 0.431976
+rect_min_size = Vector2( 92, 86 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="FeedButton" type="Button" parent="FeedContainer"]
+margin_right = 92.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 92, 86 )
+text = "Play"
+
+[node name="PlayContainer" type="CenterContainer" parent="."]
+anchor_left = 0.799
+anchor_top = 0.148
+anchor_right = 0.958
+anchor_bottom = 0.232
+margin_left = -0.223999
+margin_top = 0.447998
+margin_right = 0.191956
+margin_bottom = 0.431992
+rect_min_size = Vector2( 92, 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="PlayContainer"]
+margin_right = 92.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 92, 86 )
+text = "Feed"

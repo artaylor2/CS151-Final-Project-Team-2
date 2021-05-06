@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/backgrounds/menu_background.png" type="Texture" id=1]
+[ext_resource path="res://assets/backgrounds/MountainBackground.png" type="Texture" id=1]
 [ext_resource path="res://assets/menus/SandwhichButton.png" type="Texture" id=2]
 [ext_resource path="res://assets/menus/title_screen/buttons/MenuButton.gd" type="Script" id=3]
 [ext_resource path="res://assets/menus/title_screen/fonts/montserrat_48.tres" type="DynamicFont" id=4]
 [ext_resource path="res://src/Menus/MainGameMenu.gd" type="Script" id=5]
-[ext_resource path="res://assets/player.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/MonsterSprite.png" type="Texture" id=6]
+[ext_resource path="res://assets/menus/pixil-frame-0 (27).png" type="Texture" id=7]
+[ext_resource path="res://assets/backgrounds/pixil-frame-0 (22).png" type="Texture" id=8]
 
 [node name="MainGameMenu" type="Control"]
 anchor_right = 1.0
@@ -17,19 +19,23 @@ __meta__ = {
 }
 
 [node name="MonsterList" type="CenterContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -108.0
-margin_bottom = 102.0
+anchor_left = 0.788
+anchor_top = 0.709
+anchor_right = 0.948
+anchor_bottom = 0.793
+margin_left = 0.111969
+margin_top = -0.0160522
+margin_right = -0.0480347
+margin_bottom = -0.0320435
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MonsterListButton" type="Button" parent="MonsterList"]
-margin_right = 108.0
-margin_bottom = 102.0
+margin_right = 92.0
+margin_bottom = 86.0
 rect_min_size = Vector2( 92, 86 )
-icon = ExtResource( 6 )
+icon = ExtResource( 7 )
 flat = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -38,8 +44,14 @@ __meta__ = {
 scene_to_load = "res://src/Menus/MonsterList.tscn"
 
 [node name="Sandwhich" type="CenterContainer" parent="."]
-margin_right = 92.0
-margin_bottom = 86.0
+anchor_left = 0.042
+anchor_top = 0.703
+anchor_right = 0.201
+anchor_bottom = 0.787
+margin_left = -0.192001
+margin_top = 0.127991
+margin_right = 0.223999
+margin_bottom = 0.111938
 rect_min_size = Vector2( 60, 60 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -58,36 +70,46 @@ __meta__ = {
 scene_to_load = "res://src/Menus/OptionsMenu.tscn"
 
 [node name="Spawn" type="CenterContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -180.0
-margin_top = -30.0
-margin_right = 180.0
-margin_bottom = 30.0
+anchor_left = 0.187
+anchor_top = 0.814
+anchor_right = 0.812
+anchor_bottom = 0.873
+margin_left = 0.287994
+margin_top = 0.463989
+margin_right = 0.287964
+margin_bottom = 0.0479736
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SpawnButton" type="Button" parent="Spawn"]
-margin_right = 360.0
+margin_left = 86.0
+margin_right = 273.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 360, 60 )
-flat = true
+rect_min_size = Vector2( 187, 60 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Spawn/SpawnButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -93.5
+margin_top = -30.0
+margin_right = 93.5
+margin_bottom = 30.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
 text = "Spawn "
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -95,12 +117,42 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.697266
+margin_right = -576.0
+margin_bottom = -714.0
 texture = ExtResource( 1 )
-expand = true
 stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -288.0
+margin_top = -324.0
+margin_right = 288.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.811
+anchor_top = 0.72
+anchor_right = 0.922
+anchor_bottom = 0.783
+margin_left = 0.1297
+margin_top = 0.22583
+margin_right = 256.194
+margin_bottom = 255.714
+rect_scale = Vector2( 0.2, 0.2 )
+mouse_filter = 2
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
 }

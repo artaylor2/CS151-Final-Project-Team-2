@@ -4,6 +4,7 @@ export(int) var index = 0
 
 onready var last_index = MonsterData.monster_array.size() - 1
 onready var monster = MonsterData.monster_array[index]
+onready var monster_type_index = monster.getType()
 
 onready var go_back = get_node("Backwards_Container")
 onready var go_back_button: Button = get_node("Backwards_Container/GoBack")
@@ -20,11 +21,14 @@ onready var health_progress = get_node("StatusBox/CanvasLayer/Health/HealthBar")
 
 onready var monster_name: Label = get_node("SkillBox/MonsterName")
 onready var monster_type: Label = get_node("SkillBox/MonsterType")
+onready var monster_sprite: Sprite = get_node("MonsterSprite")
+onready var monster_type_sprite = get_node("TypePicture")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Debug for monster array index
 	print(index)
-
+	
 	# Determine if codex forward needs to be activiated
 	if index != 0:
 		$Backwards_Container/GoBack.visible = true
@@ -34,9 +38,15 @@ func _ready():
 	if index != last_index && MonsterData.num_monsters != 1:
 		$Forwards_Container/GoNext.visible = true
 		go_next_button.scene_to_load = MonsterData.file_names[index + 1]
-
+	
+	# Create monster color for sprite and set sprite texture
+	monster_sprite.modulate = monster.getColor()
+	monster_type_sprite.texture = load(MonsterData.types_sprite[monster_type_index])
+	
+	monster.doTick()
 	# Set monster name and status in label space
 	monster_name.text = "Name: %s" % monster.getName()	
+	monster_type.text = "Type: %s" % MonsterData.types[monster_type_index]
 	hunger_progress.max_value = monster.getMaxHunger()
 	happy_progress.max_value = monster.getMaxHappy()
 	health_progress.max_value = monster.getMaxHealth()
@@ -66,19 +76,21 @@ func _ready():
 func _on_Button_pressed(scene_to_load):
 	get_tree().change_scene(scene_to_load)
 
+# Feed monster function that increments hunger by 5 and updates
 func _feed_Monster():
 	monster.eat(5)
 	update_status()
-	
+
+# Function that increases monster happiness and updates bars
 func _play():
 	monster.play()
 	update_status()
 	
 func update_status():
 	# Update various status bars
-	health_update.text = String(monster.getHealth()) + "/" + String(monster.getMaxHealth())
-	hunger_update.text = String(monster.getHunger()) + "/" + String(monster.getMaxHunger())
-	happy_update.text = String(monster.getHappy()) + "/" + String(monster.getMaxHappy()) 
+	health_update.text = String(int(monster.getHealth())) + "/" + String(monster.getMaxHealth())
+	hunger_update.text = String(int(monster.getHunger())) + "/" + String(monster.getMaxHunger())
+	happy_update.text = String(int(monster.getHappy())) + "/" + String(monster.getMaxHappy()) 
 	
 	hunger_progress.value = monster.getHunger()
 	health_progress.value = monster.getHealth()

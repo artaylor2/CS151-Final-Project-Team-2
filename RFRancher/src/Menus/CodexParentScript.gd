@@ -10,17 +10,17 @@ func save_scene() -> void:
 	var monster_name = i_hope_this_works.getName()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var my_random_number = rng.randf_range(0, 999999999)
+	var my_random_number = rng.randf_range(0, 999999)
 	
 	# Create new file name for the monster codex and store it in global array
 	var file = file_res + monster_name + String(my_random_number)+ file_end
 	
-	var codexthingy = get_child(0)
-	var horrible = MonsterData.num_monsters
+	# Attach to the codex template the appropriate monster array index
+	var grab_node = get_child(0)
+	var specific_index = MonsterData.num_monsters
 	MonsterData.set_codex(file)
-	codexthingy.index = horrible
+	grab_node.index = specific_index
 	MonsterData.num_monsters += 1
-	print(MonsterData.num_monsters)
 	
 	# Save the monster codex as a new scene
 	var packed_scene = PackedScene.new()
@@ -28,6 +28,7 @@ func save_scene() -> void:
 	_set_owner(scene_root, scene_root)
 	packed_scene.pack(scene_root)
 
+	# Save the packed scene
 	ResourceSaver.save(file, packed_scene)
 
 # Function that takes the instance and makes the new parent node owner of all children

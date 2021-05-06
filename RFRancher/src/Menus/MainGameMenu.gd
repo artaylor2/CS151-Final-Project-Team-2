@@ -16,9 +16,9 @@ func _ready():
 	for button in $Spawn.get_children():
 		button.connect("pressed", self, "spawn_button", [my_random_number])
 	
-# Create a function call that sets monster caught to true, passing it to the monster list 
-# script so that we can display the found monster
+# Function for spawn button that generates a monster and saves it to the codex
 func spawn_button(my_random_number):
+	# Create new instance of monster object and then spawn monster
 	var r = RfRancher.new()
 	
 	# Test that accepts a random SSID
@@ -30,17 +30,22 @@ func spawn_button(my_random_number):
 	# Push the monster object into an array
 	MonsterData.set_monster(m)
 	
+	# Grab index so that appropriate level is triggered
 	var index = m.getType()
 	
+	# Instance the codex parent and save it
 	var instance_codex = codex.instance()
 	instance_codex.save_scene()
 	
 	# Swap scenes to appropriate level
 	get_tree().change_scene(MonsterData.levels[index])
 
+# Generic button control for rest of menu
 func _on_Button_pressed(scene_to_load):
 	get_tree().change_scene(scene_to_load)
 
+# Monster list button control
 func monster_list(scene_to_load):
-	var file_to_load = MonsterData.file_names[index]
-	get_tree().change_scene(file_to_load)
+	if MonsterData.file_names.size() > 0:
+		var file_to_load = MonsterData.file_names[index]
+		get_tree().change_scene(file_to_load)
