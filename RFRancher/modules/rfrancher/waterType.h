@@ -14,16 +14,21 @@
 
 #include "monsterBase.h"
 
+/**
+ * @brief Water type monster class
+ * 
+ */
 class WaterType : public MonsterBase
 {
+    // Godot class wrapping macro
     GDCLASS(WaterType, MonsterBase);
 
 public:
-    void init(int ssidHash);
-    void doTick();
-    void eat(int food);
+    void init(int ssidHash); // Initialize the monster
+    void doTick(); // Update the monster's vitals
+    void eat(int food); // Feed the monster
 
-    static void _bind_methods();
+    static void _bind_methods(); // Godot method bindings
 };
 
 #endif

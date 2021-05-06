@@ -14,16 +14,21 @@
 
 #include "monsterBase.h"
 
+/**
+ * @brief Ice type monster class
+ * 
+ */
 class IceType : public MonsterBase
 {
+    // Godot class wrapping macro
     GDCLASS(IceType, MonsterBase);
 
 public:
-    void init(int ssidHash);
+    void init(int ssidHash); // Initialize the monster
     void doTick(); // Hunger rate based on happiness
-    void eat(int food);
+    void eat(int food); Feed the monster
 
-    static void _bind_methods();
+    static void _bind_methods(); // Godot method bindings
 };
 
 #endif

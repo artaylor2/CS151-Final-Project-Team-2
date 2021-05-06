@@ -14,17 +14,21 @@
 
 #include "monsterBase.h"
 
+/**
+ * @brief FireType monster class
+ * 
+ */
 class FireType : public MonsterBase
 {
+    // Godot class wrapping macro
     GDCLASS(FireType, MonsterBase);
 
 public:
-    void init(int ssidHash);
+    void init(int ssidHash); // Initialize the monster
     bool eat(int food); // Double hunger regen
+    void doTick(); // Update the monster's vitals
 
-    void doTick();
-
-    static void _bind_methods();
+    static void _bind_methods(); // Godot method bindings
 };
 
 #endif

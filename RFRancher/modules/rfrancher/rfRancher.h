@@ -18,6 +18,7 @@
 #include <string>
 #include <ctime>
 
+// Include all monster subclasses
 #include "monsterBase.h"
 #include "fireType.h"
 #include "forestType.h"
@@ -28,24 +29,31 @@
 #include "waterType.h"
 #include "wifiSniffer.h"
 
-#include "core/ustring.h"
+#include "core/ustring.h" // Godot string datatype
 #include "core/reference.h" // Godot reference wrapper
 
+/**
+ * @brief RfRancher monster spawner class
+ * 
+ */
 class RfRancher : public Reference
 {
+    // Godot wrapping macro
     GDCLASS(RfRancher, Reference);
+
+    // Monster types enum
     enum monstTypes {Undefined = -1, Ghost, Fire, Water, Forest, Rock, Ice};
 
 public:
-    Node * testGetMonster(String curSSID);
-    Node * getMonster();
-    int hashSsid(String ssid);
+    Node * testGetMonster(String curSSID); // getMonster() testing version that allows for a custom SSID
+    Node * getMonster(); // Get a new monster
+    int hashSsid(String ssid); // Hash a String and return the value
 
 protected:
-    static void _bind_methods();
+    static void _bind_methods(); // Godot method bindings
 
 private:
-    int determineType(int ssidHash);
+    int determineType(int ssidHash); // Return what type of monster is given from a certain hash integer
 };
 
 #endif
