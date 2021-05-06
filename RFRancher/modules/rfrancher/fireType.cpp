@@ -1,4 +1,21 @@
+/**
+ * @file fireType.cpp
+ * @author Porath, Jacob & Taylor, Alixandra
+ * @brief Fire type monster definition file
+ * @version 0.1
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include "fireType.h"
+
+/**
+ * @brief Initilize this fire type monster
+ * 
+ * @param ssidHash Integer from hash to generate from
+ */
 
 void FireType::init(int ssidHash)
 {
@@ -12,6 +29,14 @@ void FireType::init(int ssidHash)
 
     return;
 }
+
+/**
+ * @brief Overloaded eat function that games 2x hunger from food
+ * 
+ * @param food Amount the monster is eating
+ * @return true Eat was successful
+ * @return false Eat failed (monster dead)
+ */
 
 bool FireType::eat(int food)
 {
@@ -37,12 +62,22 @@ bool FireType::eat(int food)
     return true;
 }
 
+/**
+ * @brief Update all of the monster's vitals
+ * 
+ */
+
 void FireType::doTick()
 {
     MonsterBase::doTick();
 
     return;
 }
+
+/**
+ * @brief Set Godot command bindings
+ * 
+ */
 
 void FireType::_bind_methods() // Godot method bindings
 {

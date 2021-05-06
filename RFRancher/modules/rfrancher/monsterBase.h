@@ -1,3 +1,14 @@
+/**
+ * @file fireType.cpp
+ * @author Porath, Jacob & Taylor, Alixandra
+ * @brief Base type monster template declaraction
+ * @version 0.1
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef MONSTERBASE_H
 #define MONSTERBASE_H
 

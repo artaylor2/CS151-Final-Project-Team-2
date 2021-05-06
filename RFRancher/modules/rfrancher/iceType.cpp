@@ -1,4 +1,21 @@
+/**
+ * @file fireType.cpp
+ * @author Porath, Jacob & Taylor, Alixandra
+ * @brief Ice type monster definition file
+ * @version 0.1
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include "iceType.h"
+
+/**
+ * @brief Initialize this ice type monster
+ * 
+ * @param ssidHash Integer from hash to generate from
+ */
 
 void IceType::init(int ssidHash)
 {
@@ -10,6 +27,11 @@ void IceType::init(int ssidHash)
 
     return;
 }
+
+/**
+ * @brief Update all of the monster's vitals
+ * 
+ */
 
 void IceType::doTick() // Remove hunger based on happiness level
 {
@@ -59,10 +81,21 @@ void IceType::doTick() // Remove hunger based on happiness level
     }
 }
 
+/**
+ * @brief Call MonsterBase's eat method
+ * 
+ * @param food Amount the monster is eating
+ */
+
 void IceType::eat(int food)
 {
     MonsterBase::eat(food);
 }
+
+/**
+ * @brief Set Godot command bindings
+ * 
+ */
 
 void IceType::_bind_methods() // Godot method bindings
 {

@@ -1,5 +1,33 @@
+/**
+ * @file fireType.cpp
+ * @author Porath, Jacob & Taylor, Alixandra
+ * @brief Base type monster template definition
+ * @version 0.1
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include "monsterBase.h"
 
+/**
+ * @brief Initialize the monster base
+ * 
+ * @param ssidHash Integer from hash to generate from
+ */
+void ForestType::init(int ssidHash)
+{
+    MonsterBase::init(ssidHash);
+
+    // Set type
+    this->type = Forest;
+    this->name = "Barkat";
+
+    ClassDB::bind_method(D_METHOD("doTick"), &ForestType::doTick);
+
+    return;
+}
 void MonsterBase::init(int ssidHash)
 {
     this->isDead = false; // The monster is currently living

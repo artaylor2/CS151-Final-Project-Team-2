@@ -1,3 +1,5 @@
+# SCons environment configuration
+
 # SCsub
 
 Import('env')

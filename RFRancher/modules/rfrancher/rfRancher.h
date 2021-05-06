@@ -1,9 +1,19 @@
+/**
+ * @file fireType.cpp
+ * @author Porath, Jacob & Taylor, Alixandra
+ * @brief RfRancher monster and wifi wrapper object declarations
+ * @version 0.1
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef RFRANCHER_H
 #define RFRANCHER_H
 
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <stdlib.h>
 #include <string>
 #include <ctime>
